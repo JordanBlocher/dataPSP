@@ -149,8 +149,15 @@ using its own demand functions). Buyers submit bids cyclically until an
 PER-UNIT?)(HOW DO WE MODEL ISP REVENUE? IMMEDIATE FUTURE)
 
 The form of the auction mechanism presented here is (CAN BE? NEED TO SHOW TO
-CLAIM 'IS') described as a
-pure-strategy progressive game with incomplete, but perfect information. (WHAT
+CLAIM 'IS') described as a \emph{locally}
+pure-strategy progressive game with incomplete, but perfect information.
+ you have perfect information, since you know what each move of the opponent is.
+However, since you do not know the payoff function of the other player (which
+will affect its behavior even if it does not alter your own victory conditions),
+it is a game of incomplete information.
+In the overall market analysis assumes complete, but perfect information.
+ 
+ (WHAT
 DOES NASH SAY ABOUT THIS?) (TRY MIXED? CAN ONLY HAVE MIXED WITH A DISTRIBUTED
 VALUATION.. FUTURE WORK) 
 
@@ -334,12 +341,8 @@ Absent the cost or revenue from trading data, CMHK users gain utility from consu
 data. 
 We assume that data is a unary resource belonging to the seller, and
 therefore we identify each local auction with the identity of the seller
-$j\in\mcI$, and that the user valuation
-\iffalse
-is independently and identically
-distributed (i.i.d.) and
-\fi
-satisfies the conditions for an
+$j\in\mcI$.
+We further show that user valuation satisfies the conditions for an
 \emph{elastic demand function}, as in \cite{lazar}.
 Finally, we assume in the CMHK market that a buyers' budget is always
 sufficient, as the alternative is to pay the overage fee to the ISP.
@@ -448,15 +451,28 @@ buyer strategy. (FUTURE WORK?)\\
 In order to represent the public platform of the secondary market, we model the ISP as
 a kind of buyer $\kappa$ who remains at time $t=0$, i.e. does not participate
 in any auctions. At time $t=0$, a seller $k$ entering the market will have submitted bid
-$s_\kappa^j =(\epsilon, D^j)$ to the CMHK platform. We assume that the auction
-begins at time $t>0$, and so $j$ will increment through a single iteration,
+$s_\kappa^j =(\epsilon, D^j)$ to the CMHK platform. A buyer entering the market
+at $t=0$ is assumed to have an initial nonzero bid price, which we may assume
+(SAY BETTER!) is initialized as 
+an independently and identically distributed (i.i.d.) random variable $p_i^j=X$ with
+probability $\mathcal{P}$,
+$$
+    \mathcal{P}[\epsilon\le X \le \kappa] =
+\displaystyle\int_\epsilon^{p^\kappa} \mathfrak{f}(x) \
+ds,
+$$
+where $p^\kappa$ is the overage charge of the ISP, and $\mathfrak{f}$ the probability
+density function of $X$.
+%may represent by some homogenous function of degree one (EXPAND?). 
+Thus the auction
+begins at time $t>0$, and at $t=0$, $j$ will increment through a single iteration,
 initializing bid prices.
 
 A given demand may lead to diffent prices, which emerge directly from the users valuation
-of the resources and, possibly, their decision strategies. The seller does not
+of the resources and their decision strategies. The seller does not
 require a priori demand information.
 It is worth mentioning that the \emph{analysis} of the auction as
-a game assumes some forms of demand and supply, to derive properties.
+a game assumes some forms of demand and supply, in order to derive properties.
 The mechanism itself does not require any knowledge of user demand or
 valuation. 
 \iffalse
@@ -487,7 +503,7 @@ We determine that the market supply function is equivalent to buyer demand, and
 acts as an ``inverse" function of $f_i$. We have, for bid price $y\ge 0$,
 % BUYER DEMAND 
 \begin{equation}\label{datasupply}
-    \rho_i(y) = \sum_{j\in\mcI : p_i^j\le y} D^j.
+    \rho_i(y) = \sum_{j\in\mcI : p_i^j\ge y} D^j.
 \end{equation}
 We note that $f_i$ is such that
 $i$ could still bid in \emph{any} auction $j\in\mcI$.
@@ -541,7 +557,7 @@ price. Now, we determine that, in addition to some natural constraints, the sell
 ``possible" price is conditioned by
 additional restrictions on its pricing function, the motivation for which is
 that a buyer has the choice to opt-out of any auction, and so seller $j$ has an
-incentive to set its reserve price to include enough buyers to sell all its
+incentive to set its reserve price to sell the maximum amount of
 data. Thus we have the following Lemma,
 {
 % SELLER CONSTRAINTS
@@ -587,7 +603,7 @@ marketplace. Naturally, a buyers' valuation is aggragated over local markets, an
 sellers' valuation is aggragated over its own auction. We model the valuation of
 users based on the opt-out user behavior, thereby including the buyers'
 influence on the market. We have already introduced the composition $\theta_i
-\circ e_i$ as the valuation of the buyers. We further model the valuation of the sellers, based on
+\circ \g_i$ as the valuation of the buyers. We further model the valuation of the sellers, based on
 (\ref{datademand}) and (\ref{sellerinversedemand}). We first note that, in
 general (and so we omit the subscript/superscript notation), the valuation of data quantity $x\ge 0$ is given by,
 $$
@@ -602,22 +618,17 @@ allocation $a$ is,
     \theta_i \circ \g_i(a) = \displaystyle\sum_{j\in\mcI}
  \int_0^{\g_i^j(a)} f_i(z) \ dz.
 \end{equation}
-Now, we may define seller $j$'s valuation in terms of revenue, so we have,
+Now, we may define seller $j$'s valuation in terms of revenue,
 \begin{equation}\label{sellervaluation}
     \theta^j= \displaystyle\sum_{i\in\mcI} \theta^j \circ \g_i^j(a) = \sum_{i\in\mcI}
  \int_0^{\g_i^j(a)} f^j(z) \ dz.
 \end{equation}
+We have that $\theta_i$ and $\theta^j$ are elastic valuation functions, with
+derivatives
+${\theta_i}$ and ${\theta^j}'$ satisfing the conditions of elastic demand.
 }
 \textbf{Proof:} 
-We assume that a buyer wants to minimize the cost of purchasing their data
-requirement, at the same time ensuring they get the full allocation $e_i(a)$,
-and so must minimally meet $j$'s reserve price. 
-A seller will try to maximize profit, 
-and so will try to sell all of its data.  By Lemma
-\ref{buyerconstraints} and Lemma \ref{sellerconstraints}, we have,
-$d_i^j = \g_i^j(a) \Rightarrow \sum_{i\in{\mcI}} d_i^j =
-\sum_{i\in\mcI} \g_i^j(a) = D^j = D_i$. It is worth observing that this result
-does \emph{not} imply that $s_i=s^j$. Let $\xi$
+Let $\xi$
 be a unit of data from buyer bid quantity $\g_i^j(a)$.
 If $\xi$ decreases by incremental amount $x$, then seller bid $d_i^j$ must
 similarly decrease. The lost potential revenue for seller $j$ is the price of
@@ -626,11 +637,36 @@ $$
     \theta^j(\xi) - \theta^j(\xi-x) = f^j(\xi)x.
 $$
 Thus (\ref{sellervaluation}) holds.
-As we may use the same argument for (\ref{buyervaluation}), we complete the
-proof with the observation that the function $f^j$ (resp. $f_i$) is the first
+As we may use the same argument for (\ref{buyervaluation}), as such, we will
+denote $f_i=f^j=f$ for the remainder of the proof. We observe that the function
+$f$ is the first
 derivative of the valuation function with respect to
-quantity, and therefore, in this context, represent the marginal valuations of the
-users, ${\theta^j}'$ (resp. $\theta_i'$). Finally, the sellers' natural utility is the potential
+quantity. Letting $\theta_i=\theta^j=\theta$, the existence of the derivative implies $\theta$ 
+is continuous, and therefore, in this context, $f$ represents
+the marginal valuation of the user, ${\theta}'$. Also, clearly
+$\theta(0)=\theta(\sigma(0)) = 0$. Now, as we consider data to be an infinitely
+divisible resource, we have a continuous interval between allocations $a$ and
+$b$, where $a\le b$. Now, as $\theta$ is continuous, for some $c\in[a,b]$, 
+$$
+\theta'(c) = \lim_{x\to c}\frac{\theta(x) - \theta(c)}{x-c} = f(c),
+$$
+and so $f=\theta'$ is continuous at $c\in[a,b]$, and so as $a\ge 0$, 
+$\theta'\ge 0$. Finally, we have that concavity follows from the demand
+function. Then, as $\theta'$ is
+non-increasing, we may denote its derivative $\gamma \le 0$,
+and taking the derivative of the Taylor approximation, we have, $\theta'(z) \le
+\theta'(\eta) + \gamma(z-\eta)$.
+
+We assume that a buyer wants to minimize the cost of purchasing their data
+requirement, at the same time ensuring they get the full allocation $\g_i(a)$,
+and so must minimally meet $j$'s reserve price. 
+A seller will try to maximize profit, 
+and so will try to sell all of its data.  By Lemma
+\ref{buyerconstraints} and Lemma \ref{sellerconstraints}, we have,
+$d_i^j = \g_i^j(a) \Rightarrow \sum_{i\in{\mcI}} d_i^j =
+\sum_{i\in\mcI} \g_i^j(a) = D^j = D_i$. It is worth observing that this result
+does \emph{not} imply that $s_i=s^j$. 
+Finally, the sellers' natural utility is the potential
 profit, or simply $u^j = \theta^j$, where we have chosen to omit the original cost of the data
 paid to the ISP, as it is not a component of our mechanism, and as a discussion
 of mobile data plans is outside the scope of this paper.  
@@ -678,7 +714,8 @@ $j$ at unit price $y$ given $s_{-i}^j$ is:
 % NEW ALLOCATION RULE
 \begin{align}
 \begin{split}\label{datacomposed}
-    D_i^j(y,s_{-i}^j) = \bigg\lbrack D^j - \sum_{p_k^j> y} d_k^j\bigg\rbrack^+.
+    \bar{D}_i^j(y,s_{-i}^j) &= \g_i^j \circ D_i^j( y,s_{-i}^j)\\
+    &= \bigg\lbrack D^j - \sum_{p_k^j> y} \g_k^j(a)\bigg\rbrack^+.
 \end{split}
 \end{align}
 % DATA ALLOCATION RULE
@@ -690,7 +727,7 @@ allocation from auction $j$ is,
 \begin{split}
     \bar{a}_i^j(&s) = \g_i^j \circ a_i^j(s) \\
     &= \min\bigg\lbrace \g_i^j(a), 
-    \frac{d_i^j}{\displaystyle\sum_{p_k^j= p_i^j}d_k^j} 
+    \frac{\g_i^j(a)}{\displaystyle\sum_{p_k^j= p_i^j}\g_k^j(a)} 
 D_i^j(p_i^j,s_{-i}^j)\bigg\rbrace,
 \end{split}
 \end{align}
@@ -706,37 +743,54 @@ rule for each local auction, with total cost to buyer $i$,
     -\bar{a}_i^j(s_i^j;s_{-i}^j)\bigg).
 \end{split}
 \end{align}
+\textbf{Remark:} The cost to buyer $i$ adds up the willingness
+of all buyers excluded by player $i$ to pay for quantity $\bar{a}_i^j$. i.e.
+$$
+    c_i^j(s) = \displaystyle\int_0^{\bar{a}_i^j} P_i^j(z, s_{-i}) \ dz.
+$$
+This is the ``social opportunity cost" of the PSP pricing rule.
+
+The formulation is inspired to the thinnest allocation route for
+bandwidth given in \cite{lazar}. We note that if a single seller $j$ can
+satisfy $i$'s demand, then
+(\ref{buyerutility}) reduces to the original form, defined in
+\cite{semret} as ``a simple buyer at a single resource element".
+
+(OWN WORDS!)
+The cost function will therefore be a stepwise-linear function, which is
+increasing in slope with each new bidder excluded from the market.
 
 \subsection{User Behavior}
+
 \subsubsection{Buyer Strategy}
 
+ 
 Although it is possible for a seller to fully satisfy a buyer $i$'s demand, it
 is also reasonable to expect that a seller may come close to using their
 entire data cap, and only sell the fractional overage. In this case, we
 determine that some buyers must split their bids among multiple sellers. 
-(DO I WANT ISP UPDATE?, MORE FAIR NOT TO?)
+ 
 We assume that sellers update their bids with the ISP, which is modeled as a
-``buyer" $\kappa$. (CAN I GIVE SELLERS A CHOICE TO UPDATE WITH ISP? WITHOUT
-KNOWLEDGE -> FAIRNESS?)
-A new sellers' bid, $(D^j, \epsilon)$, is public knowledge, however the buyer does not have
-price information until joining the auction. (FINISH!)
-We reason that buyers,
+``buyer" $\kappa$. 
+A new sellers' bid, $(D^j, \epsilon)$, as well as updated bids, is public
+knowledge. Also, we reason that buyers,
 in addition to fufilling their data requirement, have incentive to join
-multiple auctions in order to compare prices. Each seller that buyer $i$ adds
+multiple auctions in order to compare prices.
+Each seller that buyer $i$ adds
 to its pool potentially decreases $i$'s bid quantity in all other auctions, and
 so each buyer $i\in\mcI$ directly impacts other buyers in auctions where buyers intersect.
 Indeed, each auction joined has the potential to decrease the price a buyer
 will pay for its data, in exchange for additional messaging overhead, possible
-fees, and increased competition from other buyers. We determine that this aspect of
+fees, and increased competition from other buyers. This aspect of
 a buyers' valuation represents equity, the liabilies from which may be considered work done to find
 sellers, monetary fees, or effort of communication from participation, and so
 is naturally absorbed by the bid fee as characterized in \cite{semret}.
 
-The buyer strategy bids in auctions with the highest quantity bids first,
+The buyer strategy bids in auctions with the highest quantities first,
 a natural exploitation of the demand curve. A new seller entering the market
-with a large quantity bid will be in high demand. This behavior contributes to market price
-stability, as seller valuation is determined by buyer demand, and as such, the
-buyer strategy drives sellers towards similar quantity bids, and therefore
+with a large quantity of data will be in high demand. This behavior contributes to market price
+stability, as seller valuation is determined by buyer demand, the
+buyer strategy tends towards equal valuation of all local markets, and therefore
 similar prices. Market equilibrium is achieved when each buyer has equal bids in
 each auction. Our bidding strategy is inspired by \cite{lazar}, and we also
 hold buyers to consistent bids, where buyers sumbit identical bids to a
@@ -760,12 +814,9 @@ $$
     \mcI_i(n) =\argmax_{\mcI' \subset \mcI, \vert\mcI'\vert =
 n}\sum_{j\in\mcI'} D^j,
 $$
-where buyer $i$ chooses its seller pool by determining $n$, where
+where buyer $i$ chooses its seller pool by determining $n$, for $j\in\mcI_i$,
 \begin{equation}\label{buyercoordinate}
-    %n = \argmin_{\ell_i}(j \in \ell_i : \displaystyle\sum_{n} \frac{d^n}{d_i}
-    %n = \argmin_{\ell_i}(j \in \ell_i : \displaystyle\sum_{n} d^n
-    n = \min( j\ \vert\ j\in \mcI_i(n): j D^j\ge D_i),
-    %n = \min\bigg( j\ \vert\ j\in \mcI_i(n): \sum_{k\in\mcI_i}\frac{D^k}{k}\ge
+    \min\big\lbrace n \in \mcI \ \vert \ n D^n\ge D_i\big\rbrace. 
 \end{equation} 
 The buyer strategy produces a minimal subset of sellers $\in \mcI$ 
 able to satisfy buyer $i$'s demand. For 
@@ -875,10 +926,10 @@ n}\sum_{i\in{\mcI}'} p_i^j,
 $$
 where,
 \begin{equation}\label{sellercoordinate}
-    n = \min( i \ \vert \ i \in\mcI^j(n) : \displaystyle\sum_{i\in\mcI} d_i^j \ge
-D^j),
+    \min\bigg\lbrace n \in\mcI \ \bigg\vert\displaystyle\sum_{i\in\mcI^j(n)}d_i^j
+\ge D^j \bigg\rbrace,
 \end{equation} 
-where $n$ produces a minimal subset 
+so that $n$ produces a minimal subset 
 of buyers that maximizes $j$'s revenue at time $t$, which we will
 denote, for fixed $n$, by,
 \begin{equation}\label{buyers}
@@ -1123,15 +1174,15 @@ has a zero valuation, with respect to buyers $\in\lambda$ and sellers
 $\in\Lambda$, and therefore cannot cause transitions to occur except through a
 shared buyer, e.g. some $l\in\mcI^k$. Thus, in all cases,
 (\ref{buyerinversedemand}) and (\ref{sellerinversedemand}) hold. Fixing all
-bids in any auction $\mcI^q$, where $q\in \mcI_l$ and $q\ni \Lambda$,
-we have, for any $i\in\mcI^j$,
+bids in any auction $\mcI^q$, where $q\in \mcI_l \setminus \Lambda$,
+we have, $\forall \ k\in\mcI_i$,
 \begin{equation}\label{idemand}
     \displaystyle\int_0^{D^k} f^k(z) \ dz = \sum_{i\in\mcI^k}\int_0^{\g_i^k(a)}
 f^k(z) \ dz,
 \end{equation}
 which holds $\forall \ k\in\mcI_i$, by (\ref{jtoi}) and Proposition
 \ref{sellerstrategy}..
-Finally, using (\ref{jdemand}), (\ref{idemand}), 
+Finally, using (\ref{jdemand}), (\ref{idemand}), $\forall \ i\in\mcI^j, \forall \ k\in\mcI_i,\forall \ l\in\mcI^k$,
 \begin{align*}
     \int_0^{\g_i^k(a)} f_i(z) \ dz &= \int_0^{\g_i^k(a)} f^k(z) \ dz,
 \end{align*}
@@ -1140,7 +1191,7 @@ and
     \int_0^{\g_l^k(a)} f^k(z) \ dz &= \int_0^{\g_l^k(a)} f_l(z) \ dz,
 \end{align*}
 and the result follows by construction, and the continuity of $\theta'$:
-\begin{equation}
+\begin{equation}\label{union-eq}
     \sum_{i\in\lambda}\int_0^{\g_i^j(a)} f^j(z) \ dz = \sum_{j\in\Lambda}\int_0^{\g_i^j(a)} f_i(z) \ dz.
 \end{equation}
 
@@ -1170,18 +1221,8 @@ alternatives should not matter, it is practical, uses minimal information,
 strategy, and provides the right incentives for the truthful revelation of individual preferences. 
 (EXPAND)
 
-\subsection{Mechanism Realization}\label{realization}
-
 Consider a user seeking to prevent
-data overage by purchasing enough data from a subset of other network users.
-This user $i$ can be modeled as a opt-out buyer where, as in \cite{semret},
-We intend to show that this network setting results in a shared network optima (a
-global optimum). The formulation is inspired to the thinnest allocation route for
-bandwidth given in \cite{lazar}. We note that if a single seller $j$ can
-satisfy $i$'s demand, then
-(\ref{buyerutility}) reduces to the original form, defined in
-\cite{semret} as ``a simple buyer at a single resource element".
-
+data overage charges by purchasing data from a subset of other network users.
 The sellers' auction will function as follows: at each bid iteration all buyers
 submit bids, and the winning bid is the buyer $i$ that has the highest price
 $p_i^j$. The seller allocates
@@ -1189,81 +1230,139 @@ data to this winner, at which point all other buyers are able to bid again, and
 the winner leaves the auction (with the exception where multiple bidders bid
 the same price, where (\ref{dataallocation}) determines they will not fully
 satisfy their demand, and so we will assume they remain in the auction). The auction progresses as such until all the
-sellers' data has been allocated. We design an algorithm based on the sellers'
-fractional allocation strategy.
+sellers' data has been allocated. 
+Each time step, $s^j$ is updated it is shared with all
+participating buyers. At this point buyers have the opportunity to bid again,
+where a buyer that does not bid again is assumed to hold the same bid, since a
+buyer dropping out of the auction will set their bid to $s_i^j=(0,0)$. We
+define a single iteration of the auction, wher a seller updates bid vector
+$s^j$, and the buyers' response $s_i$, to comprise a single time step. 
 
-(NOTE - FIX TO UPDATED NOTATION!)
 % SELLER ALGORITHM
 \begin{algorithm}[H]
-\caption{(Seller fractional allocation)}
+\caption{(Seller progressive allocation)}
 \begin{algorithmic}[1]
-\State $p^{j(0)} \gets \epsilon$
-\State $s^{j(0)} \gets (p^j, D^j)$
-\While{$D^j > 0$}
-\State $\mcI^{j(t+1)} = \mcI^{j(t)}\setminus \lbrace i \in \mcI^{j(t)}: d_i^j >
-D^{j(t)}\rbrace$
-\State $ \bar{i} \gets \displaystyle\argmax_{I^j}\sum_{i\in I^j} p_i^j$ 
-\State $D^{j(t+1)} \gets D^{j(t)} - e_{\bar{i}}^{j(t)}(a)$
+\State $p^{j(0)} \gets \epsilon$, $s^{j(0)} \gets (p^j, D^j)$, $\bar\mcI =
+\emptyset$, compute
+$\mcI^{j(0)}$
+\State Update $s^j$ 
+\While{$D^j(t) > 0$}
+\State $\bar{i} \gets \displaystyle\max_{i\in I^j}\sum_{i\in I^j} p_i^j$ 
+\State $D^{j(t+1)} \gets D^{j(t)} - \g_{\bar{i}}^{j(t)}(a)$
 %\State $p^j \gets \theta_{i^*}'(d_{i^*}^j)\circ e_i$
 \State $p^j \gets p_{i^*}^j+\epsilon$ and $d^j \gets D^{j(t+1)}$
 \State $s^{j(t+1)} \gets (d^j, p^j)$
-\If{$\ \exists \ i : s_i^{j(t+1)} \ne s_i^{j(t)}$}
-\State $D^{j(t+1)} = D^{j(t)}$
-\State $t \gets t+1$
-\State Go to 4.
-\Else
-\State $\bar{i} \gets e_{\bar{i}}^j(a)$
-%\State $\beta^{j(t+1)} \gets \bigg\lbrace i\in\mcI^j: 
-%        d_i \le \bar{b}^j \bigg\rbrace$
-\State $t \gets t+1$
-\State Go to 4.
+\State Update $s^j$
+\State $\bar\mcI \gets \bar\mcI \cup \bar{i}$
+\For{$k \in \bar\mcI$}
+\If{$p_k^j < p_{i*}^j$}
+\State $D^{j(t+1)} = d_k^{j}$
+\State $\bar\mcI \gets \bar\mcI \setminus \lbrace k \rbrace$
 \EndIf
+\EndFor
+\State Compute $\mcI^{j(t)}$
+\State $\mcI^{j(t+1)} = \mcI^{j(t)}\setminus \bar\mcI$
+\State $t \gets t+1$
+\State Go to 4.
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
-We assume that each time step that $s^j$ is updated it is shared with all
-participating buyers. At this point buyers have the opportunity to bid again,
-where a buyer that does not bid again is assumed to hold the same bid, since a
-buyer dropping out of the auction will set their bid to $s_i^j=(0,0)$. As we will show in our analysis, the buyers are bidding truthfully; the
-algorithm makes use of the fact that the sellers' valuation is determined by
-the buyers' market and upholds the PSP mechanism. (CHECK) (ALSO $j$ NEEDS TO
-UPDATE FOR NEW BUYERS, $j$'S CONTROL)
-
-(BUYER ALGORITHM? WHY NOT..., CLEANER)
+Finally, we give a simple example of a convergence to a local market equilibrium, where the buyers are assumed to respond with their
+$\epsilon$-best replies.
+\begin{center}
+\begin{tabular}{c|c|c}
+Name & Bid total & Unit price\\
+\hline
+A & 50 & 1\\ 
+B & 40 & 1.2\\
+C & 26 & 1.5\\
+D & 20 & 2\\
+E & 14 & 2.2
+\end{tabular}
+\end{center}
+Let $s^{(1)} = [(65,\epsilon)]_{i\in\mcI}$ and
+$s^{(2)}=[(85,\epsilon)]_{i\in\mcI}$. The buyer bids are as follows: 
+\begin{align*}
+    s_A &= [(0,0), (50,1)], \\
+    s_B &= [(0,0), (40,1.2)], \\
+    s_C &= [(0,0),(26,1.5)], \\
+    s_D &= [(0,0),(20,2)], \\
+    s_E &= [(0,0), (14,2.2)]. 
+\end{align*}
+Then at $t=1$, we have 
+bid vector $s^{(2)}=[(0,p^{(2)}), (20,p^{(2)}), (26,p^{(2)}), (20,p^{(2)}),\\
+(14,p^{(2)})]$, and so  $(D^{(2)},p^{(2)}) = (85, 1+\epsilon)$, The buyer response is,
+\begin{align*}
+    s_A &= [(50,1), (0,0)], \\
+    s_B &= [(40,1.2), (0,0)], \\
+    s_C &= [(0,0),(26,p^{(2)})], \\
+    s_D &= [(0,0),(20,p^{(2)})], \\
+    s_E &= [(0,0),(14,p^{(2)})].
+\end{align*}
+At $t=2$, $(D^{(1)},p^{(1)}) = (65,1+\epsilon)$, with
+bid vector $s^{(1)}=[(25,p^{(1)}), (40,p^{(1)}), (0,0),\\ (0,0),
+(0,0)]$. $(D^{(2)},p^{(2)}) = (25, 1+\epsilon)$. Then,
+\begin{align*}
+    s_A &= [(25,p^{(1)}), (25,p^{(2)})], \\
+    s_B &= [(40,p^{(1)}), (0,0)], \\
+\end{align*}
+where we have removed bids to indicate winner(s) with a tentative allocation.
+At $t=3$, $(D^{(1)},p^{(1)}) = (50,1+\epsilon)$, with
+bid vector $s^{(1)}=[(25,p^{(1)}), (40,p^{(1)}), (0,0),\\ (0,0),
+(0,0)]$. $(D^{(2)},p^{(2)}) = (0, 1+\epsilon)$ and $s^{(2)}=[(25,p^{(1)}),
+(0,0), (26,p^{(2)}), (20,p^{(2)}),\\(14,p^{(2)})]$. Then,
+\begin{align*}
+    s_A &= [(25,p^{(1)}), (0,0))].
+\end{align*}
+At $t=4$ the auction ends.\\
+\textbf{Remark:} In the case where market resources do not satisfy (\ref{buyercapmin}), however as
+this constraint is not restricted in time, we reason that in the case of
+insufficient data in the market buyers may wait for additional sellers or
+purchase from the ISP, $\kappa$, as a monopoly sale. Similarly, for (\ref{datacapmin}) in
+the case of insufficient demand, where we may assume that data is held at time
+$t=0$ by $\kappa$ at bid price $\epsilon$.
 
 % VCG ANALYSIS
 \section{PSP Analysis}\label{analysis}
+
+
 \subsection{Equilibrium}
 
-Consider an opt-out buyer $i\in\mcI$. A PSP auction
-allows for a buyer to react to opponents bids, and so its incentive is based on
-the opponent profile.
-
-Due to (\ref{buyerutility}), $i$ only has an incentive to change its bid
-quantity if it increases its opt-out value $e_i$, and therefore its utility. 
-We will show that $i$ can coordinate its
-bids over $\mcI_i$ so that the opt-out value $e_i$ is the same for each
-$j \in\mcI_i$, and therefore, without loss of utility, $i$ may choose a seller pool 
-using a ``consistent" strategy, where for any $j\in \mcI_i$, $d_i^j = d_i^k, \
-\forall \ k \in \mcI_i$, and still have feasible best replies. 
+We intend to show evidence shared network optima (a
+global optimum). 
+A buyer $i\in\mcI$ will have incentive to change its bid
+quantity if it increases its opt-out value $\g_i$, and therefore its utility (\ref{buyerutility}). 
+We will show that, without loss of utility, buyer $i$ may  
+use a ``consistent" bid strategy within its seller pool, i.e. $d_i^j = d_i^k, \
+\forall \ j,k \in \mcI_i$, and as such,
+Proposition \ref{buyerstrategy} supports an optimal strategy with respect to
+(\ref{buyerutility}). 
 Our result shows that a buyer may select $\mcI_i$ in order to maximize its
 utility while maintaining a coordinated bid strategy. 
-It is intuitive that, if $j^*
-< I$, a buyer may increase the size of $\mcI_i$, thereby lowering its bid
+Reasonably, if $j^*< I$, a buyer may increase the size of its seller pool
+$\mcI_i$, thereby lowering its coordinated bid
 quantity while obtaining the same (potential) allocation $a_i$. 
-(OWN WORDS!)
-One important question to ask is why a bidder should bid with identical unit
-prices on (j) all auctions and not reduce the unit price to a level where he still wins the
-amount q i . The reason for this can be found in the pricing rule of the PSP auction. 
+As buyer $i$ submits identical bids to multiple auctions, the bid price must be
+as high as the highest reserve price $p_i^j \in \mcI_i$.
+Buyer $i$'s bid then has identical bid price $p_i^j \forall \ j \in\mcI_i$. 
+We further note that $i$ optimal strategy does not require reducing its bid price to a
+minimum in each auction, where
+the bid quantity $\g_i^j(a)$ is still fufilled. The pricing rule of the PSP
+auction dictates that a buyer $i$ will pay the cost of excluding other players from
+the auction, and as $i$'s bid price reflects its valuation of it data
+requirement $D_i$ across all local markets, we have identical bid prices in
+each auction where $s_i^j>0$. Obviously, if $j\ni\mcI_i$, then $\theta_i^j = 0$.
+
 % BUYER COORDINATION
 {
 \lemma{(Opt-out buyer coordination)}\label{coordinationlemma} 
 Let $i\in\mcI$ be a opt-out buyer and fix all sellers' profiles $s^j$.
-For any profile $S_i = (D_i, P_i)$, let $a_i \equiv \sum_j a_i^j(s)$ be the resulting data
+For any profile $S_i = (D_i, P_i)$, let $a_i \equiv \sum_j a_i^j(s)$ be a
+tentative data
 allocation. For any fixed $S_{-i}$, a better reply for $i$ in any auction is $x_i =
 (z_i,y_i)$, where $\forall \ j \in \mcI_i$,
 \begin{align*}
-    z_i^j &= e_i^{j^*}(a), \\
+    z_i^j &= \g_i^{j^*}(a), \\
     y_i^j &= \theta_i'(z_i^j).
 \end{align*}
 Furthermore,
@@ -1282,44 +1381,43 @@ u_i(s_i;s_{-i})$. In full notation, we intend to show
 $$
     u_i((d_i,p_i);s) \le u_i((z_i,y_i);s_{-i}).
 $$
-If there exists a seller who can fully satisfy $i$'s demand,
+Now, if there exists a seller who can fully satisfy $i$'s demand,
 then $\vert\mcI_i\vert = 1$, and the case is trivial as no
-coordination is necessary for a single bid. (SPECIAL CASE OF MONOPOLY? THINK!)\\
+coordination is necessary for a single bid. %(SPECIAL CASE OF MONOPOLY? THINK!)\\
 Otherwise, buyer $i$'s demand can only be satisfied by purchasing data from
 multiple sellers.
 We will show that $i$ may increase $\vert\mcI_i\vert$, and so decreasing
-$d_i^j, \ \forall \ j\in\mcI_i$, without decreasing $u_i$.
-Buyer $i$ maintains ordered set $\ell_i$ where the sellers with the
+$d_i^j, \ \forall \ j\in\mcI_i$, without decreasing $\sum_{j\in\mcI_i}u_i^j$.
+Buyer $i$ maintains ordered set $\mcI_i$ where the sellers with the
 largest bid quantities are considered first; the index of seller $j^*$ defines
 a minimal subset $\mcI_i$, satisfying (\ref{buyercoordinate}). By construction, 
-$d_i^{j^*}$ is the minimum quantity offered by any $j\in \mcI_i$,
-so $d_i^{j^*} \le d_i^j, \ \forall \ j \in \mcI_i$; $\mcI_i$ also defines the
-maximum quantity bid of any $k \ni \mcI_i$.
-Thus by (\ref{buyercoordinate}) and (\ref{opt-minallocation}), $\forall \ j\in \mcI_i$,
+$d_i^{j^*}$ is the minimum quantity bid offered by any $j\in \mcI_i$,
+so $d_i^{j^*} \le d_i^j, \ \forall \ j \in \mcI_i$. 
+Thus by (\ref{buyercoordinate}) and (\ref{opt-eq}), $\forall \ j\in \mcI_i$,
 $k\ni\mcI_i$,
 $$
-    e_i^k(a) \le z_i^j = e_i^{j^*}(a) \le e_i^{j}(a),
+    \g_i^k(a) \le z_i^j = \g_i^{j^*}(a) \le \g_i^{j}(a),
 $$
-and so, 
+and so, using (\ref{union-eq}), 
 \begin{equation}\label{minimaleq}
-    e_i^{j^*}(a)  \le \bigg\lbrack D^{j} - \sum_{k\in \mcI^j : p_k^{j}> y_{i}^{j}} d_k^{j}\bigg\rbrack^+,
+    \g_i^{j^*}(a)  \le \bigg\lbrack D^{j} - \sum_{k\in \mcI^j : p_k^{j}> y_{i}^{j}} d_k^{j}\bigg\rbrack^+.
 \end{equation}
-The buyer valuation function (\ref{buyervaluation}), guarantees
+Now, the buyer valuation function (\ref{buyervaluation}), guarantees
 that $\forall \ j\in\mcI_i$, $y_i^j \ge p_{i^*}^j$, where $p_{i^*}^j$ is the reserve price of seller $j$, defined in Proposision
 \ref{sellerstrategy}, and is by definition the minimum price for a buyer bid to
 be accepted. 
-As $D_i$ is non-decreasing, $\forall \ j\in \mcI_i$,
+As $\bar{D}_i^j$ is non-decreasing, $\forall \ j\in \mcI_i$,
 $k\ni\mcI_i$,
 $$
     D_i^j(y_i^j) \ge D_i^j(p_i^{j^*})\ge D_i^j(p_i^{k}).
 $$
-Furthermore, suppose there exists buyer $k\in \mcI^j$, such that
-$e_k^{j^*}(a) \ge e_i^{j^*}(a)$ and so $d^j - d_k^j < z_i^{j}$, resulting in a
-partial allocation. Bid $s_k \in S_i$, and so is considered in buyer $i$'s strategy. 
-As buyer $i$ is allowed to choose subset $\mcI_i$, and $\mcI_i$ is a minimal
-set, (\ref{buyercoordinate}) states that $n$ is such that $e_i^{j*}(a)
-\ge e_k^{j^*}(a)$ for any $k$, therefore such a buyer $k$ cannot exist.
 \iffalse
+Furthermore, suppose there exists buyer $k\in \mcI^j$, such that
+$\g_k^{j^*}(a) \ge \g_i^{j^*}(a)$ and $D^j - \sum_{k\in\mcI^j,k\ne i}d_k^j < z_i^{j}$, resulting in a
+partial allocation. Bid $s_k^j \in s_{-i}$, and so is considered in buyer $i$'s strategy. 
+As buyer $i$ is allowed to choose subset $\mcI_i$, and $\mcI_i$ is a minimal
+set, (\ref{buyercoordinate}) states that $n$ is such that $\g_i^{j*}(a)
+\ge \g_k^{j^*}(a)$ for any $k\in\mcI$, therefore such a buyer $k$ cannot exist.
 We have, $\forall \ j\in \mcI_i$, $k\ni\mcI_i$,
 $$
     {\theta_i}'(e_i^{k}(a)) \ge {\theta_i}'(e_i^{j^*}(a)) \ge y_i^j.
@@ -1333,17 +1431,9 @@ d_k^{j}\bigg\rbrack^+\bigg) \\
     &= z_i^{j}= e_i^{j^*}(a)
 \end{align*}
 where the last equality is by definition, and so (\ref{allocationcoordination}) is proven.
-Now, since a buyer is only charged with the cost of excluding other players from the market, the
-unit price does not influence the final charges. This unit price reflects the
-valuation of the total resources gained from the multi-auction market, and so a buyer uses this price on all
-auctions.
-We have, $\forall \ j\  \in \mcI_i, \ \forall \ k \ni \ \mcI_i$,
-$$
-    y_i^j \ge p_i^j \ge p_{i^*}^j\ge p_i^k,
-$$
-and we observe that from (\ref{datacomposed}), $\bar{D}_i^j(y, s_{-i}) =
-0 \ \forall \ y < p_{i^*}^j$, and so $y=0 \le \epsilon \Rightarrow e_i^j(a) = 0$,
-and so clearly $z_i^k = 0, \ \forall \ k \ni \mcI_i$, and therefore,
+From (\ref{datacomposed}), $\bar{D}_i^j(y, s_{-i}) =
+0 \ \forall \ y < p_{i^*}^j$, and $\bar{D}_i^j(y, s_{-i}) =0 \le \epsilon
+\Rightarrow \g_i^j(a) = 0 \Rightarrow z_i^k = 0, \ \forall \ k \ni \mcI_i$, and therefore,
 \begin{align*}
     \displaystyle\sum_{j\in\mcI_i} c_i^j(z_i,y_i) =\sum_{j\in\mcI_i}
 c_i^j(z_i,p_i),
@@ -1351,85 +1441,59 @@ c_i^j(z_i,p_i),
 thus (\ref{costcoordination}) simply shows that changing the price $p^j_i$ to $y^j_i$ does not exclude any
 additional buyers, as the bid $p^j_i$ was already above the reserve price of any
 seller $j \in \mcI_i$.
-We proceed to demonstrate that $x_i$ does not result in a loss of utility for
-buyer $i$; we will show that
+We proceed to show that $x_i$ does not result in a loss of utility for
+buyer $i$, that is,
 $$
     u_i \le u_i(z_i,y_i).
 $$
-From (\ref{allocationcoordination}), we have $a_i^{j}(z_i,y_i) = z_i^{j} = e_i^j(a(z_i,y_i))$, 
+From (\ref{allocationcoordination}), we have $a_i^{j}(z_i,y_i) = z_i^{j} = \g_i^j(a(z_i,y_i))$, 
 and so,
 $$
-    \theta_i\circ e_i^j(a(z_i,y_i)) = \theta_i\circ e_i^j(a),
+    \theta_i\circ \g_i^j(a(z_i,y_i)) = \theta_i\circ \g_i^j(a),
 $$ 
 which holds $\forall \ j\in\mcI_i$.
 Therefore, by the definition of utility (\ref{buyerutility}),
 and the buyers' valuation (\ref{buyervaluation}), 
 \begin{align*}
-    &\theta_i\circ e_i(a(z_i,y_i)) - \theta_i(a)\circ e_i(a) \\
+    &\theta_i\circ \g_i(a(z_i,y_i)) - \theta_i(a)\circ \g_i(a) \\
     &= u_i(z_i,y_i) - u_i =  \displaystyle\sum_{j\in\mcI_i} c_i^j -c_i^{j}(z_i,y_i)\\
-    &= \sum_{j\in\mcI_i}\int_{a_i^j(z_i,p_i)}^{a_i^j} f_i(d_i^j - z) \ dz.
+    &= \sum_{j\in\mcI_i}\int_{a_i^j(z_i,p_i)}^{a_i^j} f_i(d_i^j - x) \ dx.
 \end{align*}
 Then, as $a_i(z_i,p_i) \le z_i^j \le a_i^j $, and noting that
-$\theta_i\ge 0\Rightarrow f_i\ge 0$, we have $u_i(z_i,y_i) - u_i \ge 0$, $\forall \ j\in\mcI_i$.
-%1. buyers have same d but diff p
-%2. " same p but diff d i.e. d1 < d2
-Finally, as we do
-not increase the aggragate demand of the buyer, $\sum_{j\in\mcI_i} c_i^j(s) \le 
-\sum_{j\in\mcI_i} b_i^j$, and so $x_i$ is feasible.
-
-In effect, we are using the buyer demand
-to partition the auction space based on their type (EXPLAIN). \\
+$z_i^j>0\Rightarrow \theta_i\ge 0\Rightarrow f_i\ge 0$, we have $u_i(z_i,y_i) - u_i \ge 0$, $\forall \ j\in\mcI_i$.
+%Finally, we note that $z_i^j$ does not increase the aggragate demand of the buyer.
 
 \subsubsection{Incentive Compatibility}
 
-We proceed to claim that the optimality of truth-telling holds in our
-formulation, where the market functions as a hybrid of \cite{semret} and
-\cite{zheng}. The opt-out buyers' market is comprised of the minimal subset of
-sellers with the largest amounts of available data, described in the buyer strategy as $\mcI_i$.
-To achieve incentive compatibility, we find that the opt-out buyer must choose this subset so that
-its overall marginal value is greater than its market price.
-The buyers' market price is calculated as the maximum of the reserve prices
-of the sellers in the opt-out buyers' pool.
-the market prices at the %different auctions, weighted by the data provisioning vector values.
-The actual bids are
-obtained from the opt-out buyers' strategy. The quantity to bid is given
-by the auction mechanism, i.e. (\ref{dataprice}) and (\ref{datacomposed}), as
-the maximim possible quantity of data that a buyer $i$ can bid over its seller
-pool while maintaining its aggragate marginal valuation greater than the aggragate of
-minimum prices maintained by the sellers in $i$'s pool.
-As with a single resource, \cite{semret} and
-\cite{lazar}, we show that truth-telling is optimal for the buyer, i.e. in each auction, the buyer sets
-the bid price to the marginal value.
+The property of truthfullness is an essential component of equilibrium in
+second-price markets. The strategies described in this paper have removed the
+necessity for a user to determine its own valuation function, and due to our
+construction, we intend to show that truthful bids are optimal for all users,
+i.e. bid prices are to the marginal value as determined by market dynamics. 
+To achieve incentive compatibility, we find that the opt-out buyer must choose
+this subset so that its overall marginal value is greater than its market price.
 
-Seller $j$'s reserve price is determined by a
-buyer $i \ni \mcI^j$, and therefore, even if this price is zero,
-then $p^j = \epsilon \ge 0$.
-
-We argue that if truthfulness holds \emph{locally} for both buyers and sellers, i.e. $p_i ={\theta_i}' \
-\forall \ j \in \mcI_i$ and $p^j = {\theta^j}' \ \forall \ i \in\mcI^j$, then
-there exists a local market
-equilibrium (NOTE: NOT GLOBAL! YET). We have the following Proposition. For
-completeness, we use the full notation. (BAD SENTENCE)
+(DO I NEED TO PROVE CONTINUITY TOO?)
 
 {
-\proposition{(Incentive compatibility in local auctions)}
-For any seller $j$, let time $t>0 \in \tau$ be fixed and for any buyer $i\in
-\mcI^j$, let $s_{-i}$ also be fixed. )VALIDATE: FOR ALL j) Define,
+\proposition{(Incentive compatibility across local auctions)}
+Let $\Lambda$, $\lambda$ be defined as in Lemma (\ref{userunion}), and fix time
+$t>0 \in \tau$, and fix $s^j, \ \forall \ j\in\Lambda$, and for some
+buyer $i\in \mcI^j$, (DO I WANT LAMBDA? SO MANY CASES) let $s_k$ also be fixed $\forall \ k\ni i \in \lambda$. Define,
 \begin{align}
 \begin{split}\label{eta}
     \eta_i &= \sup\bigg\lbrace x\ge 0 : 
- {\theta_i}'(x) > \bar{P}_i^j(x)\bigg\rbrace, 
+ {\theta_i}'(x) > \displaystyle\sum_{k\in\lambda} P_k^j(x)\bigg\rbrace, 
 \end{split}\\
 \begin{split}\label{chi}
-    \chi_i &= \sup\bigg\lbrace x\ge 0: 
-\displaystyle\int_0^x 
-    \bar{P}_i(x) \ dx \le \sum_{j\in\mcI_i}b_i^j \bigg\rbrace,
+    \chi_i &= \sup\bigg\lbrace x\ge 0: x \le
+\displaystyle\sum_{k\in\lambda}D_i^j(\theta_i'(x)) \bigg\rbrace,
 \end{split}
 \end{align}
 $z = \min(\eta_i, \chi_i - \epsilon / \theta_i'(0))^+$, and for each $j \in
 \mcI_i$, 
 $$
-    v_i^j = e_i^{j^*}(z) 
+    v_i^j = \g_i^{j^*}(z) 
 $$
 and 
 $$
@@ -1443,11 +1507,14 @@ With reserve prices $p^j >0$, there exists a ``truthful" local game embeddeded
 in each local auction, and thus an equilibrium point for the local auction. 
 }\\
 \textbf{Proof:}
+
 For the buyer, we show that $t_i$ is an $\epsilon$-best reply. That is,
 $$
     u_i(t_i;s_{-i}) + \epsilon \ge u_i(s_i;s_{-i}).
 $$
-Let $z = \eta_i^j$. We have that $i\in\mcI^j$, 
+Let $z = \eta_i^j$, and again let $p_*^j = f^j \circ \g_i^j(a) $ denote the reserve
+price of auction $j$, and $p_i^*= f_i \circ \g_i^j(a)$ denote the (coordinated) bid price of buyer $i$. 
+We have that $i\in\mcI^j$, 
 and (\ref{buyerinversedemand}) defines $\theta_i'(z)$ as being
 max of the reserve prices $p_i^j,\ \forall \ j\in\mcI_i$, therefore
 (\ref{eta}) is such that,
@@ -1591,13 +1658,24 @@ p^j \bigg(ai^j(0; s_{-i}^j)
    p_i^j \ge \min_{i\in\mcI}\big(p_i^j).
 \end{equation}
 \\----------------------------------------------------\\
-(SELLER FINISH)\\
 This forms a ``truthful" local game embeddeded within $j$'s auction with strategy space
 restricted to $\epsilon$-best replies from buyers $\in \mcI^j$. Therefore we have that a
 fixed point in the ``truthful" local game is a fixed point for the auction. We
 further argue that as the set $\mcI^j$ is
 computed at each bid iteration, that our result holds for time $(t+1) \in \tau$.
 
+A Nash equilibrium is defined as a strategy vector, or, in terms of PSP, a bid
+profile $s$,
+from which no player has a unilateral incentive to deviate (Johari, 2004)
+
+
+As a result of auction initialization, a seller $j$'s valuation defines its
+reserve price to be determined
+by a buyer $i \ni \mcI^j$, even if this price is zero, we have that $p^j = \epsilon \ge 0$.
+We argue that if truthfulness holds \emph{locally} for both buyers and sellers, i.e. $p_i ={\theta_i}' \
+\forall \ j \in \mcI_i$ and $p^j = {\theta^j}' \ \forall \ i \in\mcI^j$, then
+there exists a local market equilibrium extending over a subset of connected
+local markets. We have the following Proposition. 
 
 {
 \lemma{(Static Data Nash Equilibrium)} 
