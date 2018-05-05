@@ -86,7 +86,9 @@ of data usage in a month, i.e., a monthly data cap \cite{???}.
 2cm's (2nd exchange market) data exchange platform allows users to submit
 bids to buy and sell data.
 This usage model, is, as far as our knowledge, the first data trading
-platform that allows customers to buy and sell their own data.
+platform that allows customers to buy and sell their own data. The study of
+auction behavior in a data-exchange market distributed over mobile devices is
+largely unexplored.
 We describe a distributed auction mechanism for data exchange inspired by the
 classic PSP throughput problem,
 and prove that our distributed data exchange mechanism provides incentive
@@ -128,86 +130,108 @@ market algorithms) and show the existence of a dynamic global market equilibrium
 
 \section{Introduction}
 
-(NOTE: THE INTRODUCTION IS CURRENTLY A COLLECTION OF NOTES AND PARTIAL
-SENTENCES)
 In this work, we propose \emph{a distributed progressive second price (PSP) auction in
-order to maximize social utility in the CMHK market}. Using the
-distributed PSP mechanism on CMHKs data
-exhange platform, we show that for cellular data allocated between multiple users there
-exists an $\epsilon$-Nash market equilibria. A quality of the PSP auction is that
+order to maximize social utility in a shared-data market}
+A quality of the PSP auction is that
 demand information is not known centrally, rather, it is distributed in the
 buyers' valuations. The mechanism for an auction is defined
 as \emph{distributed} when the allocations at any element depend only on
 \emph{local} state: the quantity offered by the seller at that element, and the
 bids for that element only \cite{lazar}. In this work, the proposed mechanism
-allows the distribution of bids, where there are many ISPs each holding
-thier own local auction; there is no entity that holds a global market knowledge.
+allows the distribution of bids, where there are many auctioneers, each holding
+thier own local auction, and there is no single entity holds a global market knowledge.
 
 In a PSP mechanism, bids consist of (i) an available (required) quantity and (ii) a unit-price (calculated
 using its own demand functions). Buyers submit bids cyclically until an
 ($\epsilon$-Nash) equilibrium is reached and a local auction is concluded. 
-
-(HOW DO WE MODEL ISP REVENUE? FUTURE WORK?)
-
 The form of the auction mechanism presented here is described as a \emph{locally}
 pure-strategy progressive game with incomplete, but perfect information.
-In a distributed setting, local markets have perfect local information, since you know what each move of the opponent is.
-However, since users are not aware of behavior in other auctions, it is a game of incomplete information.
-We complete a comprehensive analysis of market dynamics, and will assume
-complete and perfect information in order to verify properties and validate
-results of the auction mechanism.
+In the distributed setting, we assume users have a binary type, either seller,
+i.e. auctioneer, or buyer. The perspective of strategy changes according to the user
+type. We assume unilateral strategies, and so sellers are unable to
+derive opponent information from buyer bids, and a buyer recieves updates but
+may not be aware of the behavior of opponent strategies in other markets.
+We complete a comprehensive analysis of market dynamics, and will assume for
+our analysis a game of complete and perfect information in order to verify
+properties and validate results of the auction mechanism.
 
-(TO ORGANIZE)\\
-The main contribution of this work 
-is an auction mechanism inspired by the classic PSP throughput problem. In
-order to apply a distributed PSP implementation to the CMHK market,
-we analize the behavior of users in a dynamical data exchange market. As both buyers and sellers are able
+The body of this work describes an evolutionary system that drives an auction
+mechanism inspired by the classic PSP throughput problem \cite{lazar}. In
+order derive a distributed PSP implementation that arrives at an optimal
+objective,
+we analyze the behavior of users in a dynamical data exchange market. 
+It is known from \emph{Arrow's Theorem}, that in a multi-auction model, no deterministic strategy can
+provide a mapping of the preferences of users into a market-wide (complete
+and transitive) strategy while also meeting a specified set of criteria:
+unrestricted domain, non-dictatorship, Pareto efficiency and independence of
+irrelevant alternatives. 
+Therfore, as both buyers and sellers are able
+to change their bid strategies, and as each user only has \emph{local}
+information about the bidding environment, it is clear that a better market
+position can only be determined by an adaptive, or evolutionary, strategy.
+In other words, a move to a beter market position is synonymous to a
+strategic bid. In modern auctions, a strategy must meet a certain set of
+criteria: 1) truthfulness as a dominant strategy, 2) individual rationality/
+selfishness.  
+A Nash market equilibrium, where
+supply equals demand, requires that users maintain incentive for truthfulness
+across a distributed setting.
+As both buyers and sellers are able
 to change their bid strategies, and as each user only has \emph{local}
 information about the bidding environment, it is clear that an unconstrained
-market, even with a finite number of users, could suffer from the communication
-expense from numerous local auctions trading an infinitely divisible resource.
-We will assume that the cost of participating in the CMHK secondary market is
-absorbed by the bid fee, which could represent data used in submitting bids, or
-a fee charged per unit of data, or a flat rate charged at the completion of the
-purchase. It is worth mentioning that CMHK users are not allowed to resell data
-purchased from the CMHK
-market, additionally, the purchased data does not carry to the next
-service period. Therefore, a market equilibrium, where
-supply equals demand, requires that users maintain incentive for truthfullness
-across a distributed setting.
-To the best of our knowledge, this is the first work to provide a truthful
-mechanism in a distributed setting for data-exchange based on market behavior.
-\\
-\textbf{Remark:} It is certainly possible to extend the mechanism, alleviating the
-restrictions introduced by the CMHK secondary market. We reserve this for
-future work.
+market, even with a finite number of users, could suffer from the
+expense of many local auctions trading an infinitely divisible resource.
 
-We claim that the CMHK market is
-able to achieve an equilibrium as the sellers and buyers have an
-incentive for a collaborative exchange, and as our mechanism provides incentives
-for optimal, effective communication between the connected users. 
+Using the CMHKs data exhange platform as a host for our distributed strategic
+PSP mechanism, we show that in the market of one-time transaction payoffs,
+where the exchange is a quantity of cellular data transferred between multiple
+users, that there exists a primary $\epsilon$-Nash market equilibrium that is
+the winning dominant strategy in the multi-auction system.
+To the best of our knowledge, this is the first work to provide a comprehensive
+derivation of a truthful mechanism in a distributed setting for
+data-resource-exchange based on market behavior. In addition, we are the first
+to adapt the PSP mechanism to be contained within a market topology. The market
+topology and the user strategy are organically determined by the impact of user
+actions, 1) and 2), on market dynamics, and so determines a minimally optimal objective
+representing user valuation globally, and so fufills an additional property of
+economy over time and space. We further include the ISP as a deaf and blind
+user, who nonetheless holds the power to create a monopoly, thereby providing a free
+market space in which the market may operate, and real-world implications.
 
-Despite the small message space, with many user types, there is no single
-way to do the transformation from the direct revelation mechanism to the
-desired one. Our mechanism is designed by guessing
-right direct-revelation-to-desired-mechanism transformation and building it
-into the allocation rule to be the primary step in the design. This incentive for a user to
-truthfully reveal its type is built into the user strategies. As in classic
-mechanism design, we determine the equilibria as result of incentive
-compatibility in our mechanism design. 
-We claim that in the CMHK market our formulation not only holds the desired VCG qualities,
+We claim that our mechanism is designed to optimally progress towards an
+equilibrium by providing users with an incentive framework, and so rational
+users choose a market-collaborative exchage. 
+%\textbf{Remark:} It is certainly possible to extend the mechanism, alleviating the
+%restrictions introduced by the CMHK secondary market. We reserve this for
+%future work.
+In classic mechanism design, with multiple user types, there is no single
+way to design the transformation from the direct revelation mechanism to its
+corresponding computational design. We apply a modifier to the PSP mechanism in
+order to mutate the strategy space, following dynamic user
+correspendence. As in \cite{lazar}, we take the direct
+approach by guessing the right modifier, and context, such that we have the
+desired result by composition with the PSP rules. 
+As in \cite{lazar}, the incentive for a
+user to truthfully reveal its type is built into the user strategies. Then,
+local equilibria follow as a result of incentive
+compatibility characterizing best strategy moves. \\ 
+\textbf{Remark:} The terms ``bid" and ``strategy" are often interchangable,
+referencing mechanism design and game theory, respectively.\\
+We claim that our formulation not only holds the desired VCG qualities,
 but minimizes comminication overhead 
 and auction duration, resulting in a convergence time (FIND COMPETITIVE RATIO?)
 with respect to the classic throughput problem. 
 
-The strategies described in this paper have removed the
-necessity for a user to determine its own valuation function, we intend to show that the market dynamics resulting from the
-construction of the user strategy space results in truthful bids that are optimal for all users,
-i.e. bid prices are to the marginal value as determined by market dynamics. 
+The user strategies are organic in that they are natural, or
+induced by the dynamic market itself. Thus, according to second-price strategy,
+we have an autonomous, self-updating (NEW WORD) and inclusive optimization, defined in terms of the multi-objective solution.
 This is the (built-in) transformation from the
-direct-revelation mechanism to the desired message space.
+direct-revelation mechanism to the desired message space, (OWN WORDS) where each user
+message defines a strategic point, which we may interpret as a move to a better
+market position. Then, in the limit of the data-model, a user reveals its
+valuation of a quantitiy of data-resource over the whole range of possible demands.
 
-The paper is organized as follows...
+The paper is organized as follows... (TODO)
 
 \subsection{Distributed Progressive Second Price Auctions}
 
@@ -319,25 +343,20 @@ In the PSP market, a
 user is considered truthful if their bid price equals their marginal valuation,
 i.e. $p_i^j = {\theta_i^j}'$.
 
-\subsection{Motivation for Privacy/Security}(NEW SECTION)
-
-A property of PSP is that the user valuations are held private. 
-
-1. The seller doesn't update with the ISP, and so does not know the market price
- in the data-exchange market.\\
-2. The auction is distributed, so there is no collusion between sellers and
-ISP.\\
-3. The mechanism is self-contained, and only requires participation. (THINK!)
-4. Better economy, as few users will get data plans with a lot of data, make
-money, allowing others to have cheaper data plans and not pay a lot for
-texting, phone calls (Buzzfeed). Free market capitalism! \\
-(CONCERN HERE ABOUT THROTTLING)
-
 \section{Related Work}
+
+VCG possible outcomes are characterized by bipartite matchings
 
 \section{The Problem Model}
 
 \subsection{The CMHK Market}
+
+We investigate the 2cm app, a data-exchange platform published for China Mobile Hong
+Kong 4G Pro Service Plan customers. Telecommunications ISPs' revenue is typically
+gained by charging users a fixed fee for a maximum amount
+of data usage in a month, i.e., a monthly data cap \cite{???}. 
+2cm's (2nd exchange market) data exchange platform allows users to submit
+bids to buy and sell data.
 
 We construct the model for a PSP data auction for mobile users
 particpating in CMHK's secondary data-sharing market.
@@ -416,13 +435,98 @@ auctions(FUTURE WORK?). Thus, the buyers are able to directly and globally
 influence the CMHK market dynamics, with the sellers taking a secondary role
 (FIND IN ANOTHER PAPER FOR SUPPORT OR OBVIOUS ENOUGH?).
 
+\subsection{The Data Market Problem}
 
+We address several topics under discussion in the real-monetary market of virtual
+data ownership. The issue of digital property is a well-known debate. The
+proliferation of services that are moving from grid to node communication
+outdates algorithms designed for optimization in this space. Direct and
+network-based communication between mobille devices allows for a simple
+mutation of classic optimization models. We will assume that the cost of participating in the CMHK secondary market is
+absorbed by the bid fee, which could represent data used in submitting bids, or
+a fee charged per unit of data, or a flat rate charged at the completion of the
+purchase. Thus, the bid fee acts to limit market iterations. \cite{semret}
+provides a proof, where convergence time is inversely related to $\epsilon$.
+Our design extends the pricing function:
+\begin{itemize}
+    \item A mutation characterized by a new variable cost, absorbed into the bid fee,
+        represents the
+        fact that CMHK users are denied resale and carryover of shared data, effectively creating
+        a form of liability with each transaction. 
+\end{itemize}
+This additonal fee acts as a regulate the mechanism behavior itself, as in a
+real-world situation, it is not ideal for fully-connected, asychronous
+user-to-user communication, which would obviously thrash the network. The
+mutation of the bid fee $\epsilon$ is based on real-world parameters associated
+with individual users. This information may be collected from a specific
+device's configuration, i.e. enabled roaming, daily data restrictions etc.
+We claim that our mechanism is self-regulating, and furthermore, optimized to satisfy the
+needs of the individual.
+
+A defining property of PSP is that user valuations are held private. 
+The CMHK model provides a unique opportunity for social equilibrium, as it
+allows users to share data without sharing the same data plan, a restriction in
+most ISPs, such as \cite{att}. We reason that the CMHK secondary-market
+approximates local, free-market economy. Laws such as \cite{fedbill} exist to regulate ISPs
+as they have historically come close to monopolizing regional markets, leading
+to consumer abuse. Our mechanism
+takes advantage of the opportunity for full generalization provided by CMHK.
+Because CMHK is a generalization of more restrictive ISP practices, it is simple
+to adapt our mechanism to the data-sharing
+plans published by any ISP, i.e. the family, or corporate, data-sharing plan
+\cite{att}.
+We argue that data-sharing plans in general may be
+biased against the end-user. Adding devices to a shared-data plan includes a
+base fee for other services that have relatively small demand in comparison to
+the demand for data. Effectively, users must pay for services that go unused in
+order to increase the amount of data for a shared plan. Flexible data-sharing
+plans are similar to the CMHK market, where a limited number of devices may
+share a single data plan. A shared-data plan, however limited, offers better economy
+by creating primary users with a service package with a lot of data, and
+limited number of secondary users that are only using data \cite{att}.
+The CMHK model allows for primary and secondary users to freely correspond,
+without the restriction of a static primary-secondary user association.
+This effectively creates a competitive secondary market, and contributes to the
+dynamics of a free-market economy. Market competition is a desirable quality in
+free markets, and is encouraged, particularly in wireless and data services. In
+fact, California Legistature has recently passed laws promoting
+competition and enforcing fair practice of ISPs \cite{cabill}.
+
+We determine the need for privacy to extend from the users to the data-sharing market, in
+order to protect market fairness and exploitation of information by the ISP. In
+our model, free-market exchange is protected as privacy is integrated into the
+mechanism. Our design extends end-user privacy by the following: 
+\begin{itemize}
+    \item A mutation of user type, where
+    the ISP is represented by the blind, deaf user $\kappa$. Then, 
+    sellers do not update pricing information with the ISP, thereby hiding
+    its local market price in the data-exchange market. As the ISP has limited
+    information from its ``competitor", it is unable to sabatoge prices derived
+    from fair market competition.
+    \item The mechanism is self-contained, as prices are derived from market
+    dynamics, and only requires user participation,
+    therefore there cannot be any nefarious or criminal entity influencing
+    market dynamics.
+\end{itemize}
+Thus, we claim that our model supports and protects the secondary market, allowing it
+to be in direct competition with its parent ISP, and so contributes to the
+regulation of ISPs \cite{fedbill} and supports a regional free-market economy
+with respect to wireless data \cite{cabill}.
+
+In the original bandwidth-sharing model, the allocation role defines the active edges in a network for a particular bidder. 
+The flexibily of correspondance, and
+the ability for instantaneous communication in the distributed wireless network, allows for a more general, and
+thus adaptive strategy. We therefore introduce additional restrictions on
+defining properties of PSP multi-auctions, and claim they are normal.
 
 \subsection{User Valuation}
 
-We assume that the CMHK market does not have network
-bottlenecks, which is purely a bandwidth problem, as in \cite{semret}, and as
-bandwidth in wireless networks is not the focus of this paper. We derive a globally optimal strategy suited for
+We address the market risks and securities in the CMHK secondary market. 
+We provide a game-theoretic model of a real market progression, which we use to
+derive, then define, adaptive variables. 
+We assume that the data-sharing market does not have network
+bottlenecks (although congestion is a similar, albeit separate issue), which is purely a bandwidth problem, as in \cite{semret}, and as
+bandwidth in wireless networks is not the focus of this paper, we derive a globally optimal strategy suited for
 users with local information in a distrubuted data-sharing model. 
 
 Our mechanism allows a buyer
@@ -2013,6 +2117,20 @@ Patrick Maillé.
 \textit{Market Clearing Price and Equilibria of the Progressive Second Price
 Mechanism},
 RAIRO - Operations Research, EDP Sciences, 2007, 41 (4), pp.465-478.
+
+\bibitem{att}
+\textit{AT\&T Mobile Share Flex Plans}
+\url{https://www.att.com/plans/wireless/mobile-share-flex.html}
+2018
+
+\bibitem{cabill}
+\textit{Communications: broadband Internet access service}, S.B. 822. Reg. Sess.
+2017-2018. (2018).
+
+\bibitem{fedbill}
+\textit{No Rate Regulation of Broadband Internet Access Act},H.R. 2666, 114th
+Cong. (2016).
+
 
 \end{thebibliography}
 
