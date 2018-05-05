@@ -347,7 +347,7 @@ $s \equiv
 [s_i^j] \in \mcI \times \mcI$, and $s_{-i} \equiv [s_1^j , \cdots , s_{i-1}^j , s_{i+1}^j , \cdots
 , s_I^j]_{j\in\mcI}$ as the profile of user $i$'s opponents. 
 Our strategy space is the vector space of all buyer $i$'s \emph{possible} bids,
-$S_i=\Pi_{j\in\mcI} S_i^j$, and $S_{-i} =\Pi_{j\in\mcI} S_i^j(s_{-i})$ the
+$S_i=\Pi_{j\in\mcI} S_i^j$, and $S_{-i} =\Pi_{j\in\mcI} \Pi_{k\ne i\in\mcI} S_i^j$ the
 set of opponent profiles. We assume that the users are connected.
 A buyer submits bids directly to sellers. Users prefer to participate in the CMHK secondary market as it allows them to purchase
 additional data for a cost less than the overage fee set by the ISP. We assume
@@ -468,6 +468,9 @@ It is possible that a seller would be able to derive information about other
 auctions by examining buyer bids over time, particularly if the seller had knowledge of the
 buyer strategy. (FUTURE WORK?)\\
 
+We interpret the collection of local auctions as collection of congestion games,
+where a buyers' payoff depends on the dynamics of the set of local auctions it
+``chooses".
 In a multi-auction market, each auction a buyer joins has the potential to
 decrease the potential cost of its data. However, increasing the size of the
 auction implies a certain risk, which we may interpret as a potential and
@@ -639,7 +642,12 @@ constraint as,
     u \le \varrho,
 \end{equation}
 which may be interpreted as the effort a rational user is willing to expend
-on its message space, and serves to limit the size of the buyer/seller pools.
+on its message space, and serves to limit the size of the buyer/seller pools. 
+Additionally, in congestion games,
+overly-frequent bid updates can result in an auction being
+overloaded, similarly to a DOS (denial-of-service) attack, thus the
+``liability" component of $\epsilon$ attempts to regulate bid flooding. 
+
  
 Finally, it is worth mention that the \emph{analysis} of the auction as
 a game assumes some forms of demand and supply, in order to derive properties.
@@ -1552,7 +1560,7 @@ We argue that if truthfulness holds \emph{locally} for both buyers and sellers, 
 \forall \ j \in \mcI_i$ and $p^j = {\theta^j}' \ \forall \ i \in\mcI^j$, then
 there exists a market equilibrium extending over a subset of connected
 local markets. 
-For a buyer $i$, define have the set of possible $\epsilon$-best replies,
+For a buyer $i$, define the set of possible $\epsilon$-best replies,
 \begin{equation}\label{e-bid}
     S^\epsilon(s) = \lbrace s_i\in S_i(s_{-i}) : u(s_i;s_{-i}) \ge
 u_i(s_i';s_{-i}) -\epsilon, \ \forall \ s_i'\in S_i(s_{-i})\rbrace,
@@ -1562,11 +1570,8 @@ and the set of \emph{truthful} bids,
     T_i = \lbrace s_i\in S_i(s_i) : z=\displaystyle\sum_{j\in\mcI_i} \g_i^j(a)
 \wedge p_i = \theta_i'(z)\rbrace,
 \end{equation}
-where $\wedge$ denotes the logical ``and" operator. The ``strategic" set $T_i$
-is restricted by Proposition \ref{buyerstrategy}. In the remainder of our
-analysis we limit the strategy space to our construction, and so we have the
-bid for buyer $i$, $S_i=\Pi_{j\in\mcI_i} S_i^j$, and the opponent bid, $S_{-i}
-=\Pi_{j\in\mcI_i} S_i^j(s_{-i})$ 
+where $\wedge$ denotes the logical ``and" operator. We note that the ``strategic" set $T_i$
+is restricted by Proposition \ref{buyerstrategy}.
 We have the following Proposition, 
 
 {
@@ -1674,80 +1679,107 @@ with strategy space restricted to $\epsilon$-best replies from buyers $\in
 \lambda$. Therefore we have that a fixed point in the ``truthful" game is a fixed point for the auction. 
 $\qed$\\
 
-We have proven that buyers will submit bids according to their marginal
-valuations. Now, in the interest of completeness (BAD SENTENCE), we extend our result to be
-all-inclusive. As a result of the PSP multi-auction in the constructed strategy
-space, we find a well-defined mathematical structure manifests as a result of bid
-correspondence. The game-theoritical basis of our argument is complemented by,
-and benefits by (NEED? extension to) an abstract-theoretical analysis.
-Motivated by the symmetric nature of supply and demand we provide further rigor
-by mathematical construction. Thus, we begin with the definition of
+The strategy space of is comprised of a collection of bid, or ``strategy", vectors that
+together, describe the collection of congestion games. A change in buyer $i$'s
+utility, resulting from a change in strategy, equals the change in
+the local market objective of each seller $j\in\mcI_i$. These local objectives are known as potential functions, and are
+formulated by mapping the incentives of all users in a local auction to a
+single function. The goal of our analysis is to therefore construct a global potential function that encompasses
+all local markets. Then, we may determine a Nash equilibrium by finding a local
+optima of the potential function. Additionally, as the potential function also
+iterates, it may be used in an analysis of convergence. The
+convergence of a Nash equilibrium results from the progression of
+$\epsilon$-best replies, where each subsequent bid is a unilateral
+improvement, provided that $t_i$ is continuous in opponent profiles.
+From the original proof by \cite{lazar}, we observe that the collection of
+unconstrained truthful bids may be a subset
+of the collection of $\epsilon$-best replies, i.e. $T_i\subset S_i^\epsilon$.         
+%An essential component of determining the existence of a Nash equilibrium is 
+For this work, it suffices to show the continuity of the set of truthful
+$\epsilon$-best replies in the set of opponent bid profiles.
+In order to address continuity in a global sense, we must demonstrate
+continuity in the construction of our model.
+Thus, we extend our analyis to be all-inclusive, %The game-theoritical basis of our argument is complemented by an abstract-theoretical analysis.
+and determine the
+existence and ``uniqueness" of a global market objective by rigor of mathematical construction. Thus, we begin with the definition of
 correspondence,
 {
 \definition{(Correspondence)}
-An ordered triple $(X,Y,R)$, where $R$ is a relation from $X$ to
+A correspondence is mathematically defined as an ordered triple $(X,Y,R)$, where $R$ is a relation from $X$ to
 $Y$, i.e. any subset of the Cartesian product $X\times Y$.
 }
-Now, in an economic model, the mapping $(\mcI,\mcI,R)$ is a map from the
-elements of $\mcI$ to the power set $\mathcal{P}(\mcI)$. The most obvious
+
+In an economic model, a correspondence $(S_i,S_{-i},R)$ defines a map from $S_i$
+to the power set $S_{-i}$, where $R$ is a binary relation, i.e. $R \subset
+S_i\times S_{-i}$. The classic
 example of a correspondence in our model is the buyers' best response
 $B_i^\epsilon$, where, for the multi-auction,
-$\Pi_{j\in\mcI} S_i^j$ and $\Pi_{j\in\mcI} S_{-i}^j$ are power sets under the
-identity relation, e.g $(S_i, S_i,\Pi\in\mcI S_i)$. The auction
-progresses by repeated mappings, where the full strategy space is the
-correspondence
-$(\Pi_{j\in\mcI}S_i,\Pi_{j\in\mcI}S_{-i},\Pi_{j\in\mcI}S_i^\epsilon)$ and
-finally, the best response is given as a reaction correspondence $B_i^\epsilon$
-defined by the mixed-strategy game.
+$S_i$ and $S_{-i}$ are built by repeatedly using the
+cartesian product over bid profiles. The power set 
+$S_{-i} =\Pi_j \big(\Pi_{k\ne i} S_i^j)$ arises naturally from the
+product of ordered sets. 
+The best response is a reaction correspondence
+defined by the mixed-strategy game. Denoting  $B_i^\epsilon = T_i\cap
+S_i^\epsilon$, is the set of truthful $\epsilon$-best replies in opponent bid
+profiles $S_{-i}$. \\
+\textbf{Remark:} 
+The ease by which the game is constructed is a consequence of the the cartesian
+product on a 2-dimensional message space. \\
+A natural induced topology of this space is the product
+topology, e.g. the canonical map $S_i \rightarrow \Pi_{j\in\mcI} S_i$.
 
-Thus, we address the sellers bids, and include the following corollary to support our result.
+Motivated by the symmetric nature of supply and demand, we determine the
+game-theoritical argument is complemented by an abstract-theoretical analysis.
+In fact, we may even be philosophically motivated, as the truth value of a bid
+is determined only by how it relates to markets, and whether it provides an
+accurate correspondence. Using a set-theoretical approach to address the sellers
+bids, we derive our result from the symmetry of supply and demand,
+(\ref{buyerinversedemand}) and (\ref{sellerinversedemand}), Proposition
+\ref{incentive}, (\ref{newprice}), Lemma \ref{userunion} and Lemma
+\ref{buyercoordinate}, and include the following corollary,
 {
 \corollary{Data-bid correspondence (seller cooperation)}
-For a fixed time $t\in (0,\tau]$, seller bid $s^j$ is (NEED THIS? consistent with) a truthful
+Let $\Delta$ be defined as in Lemma (\ref{userunion}).
+For a fixed time $t\in (0,\tau]$, seller bid $s^j$ is consistent with a truthful
 $\epsilon$-best reply.
 }\\
 \textbf{Proof:}
-We claim there exists an equivalence relation $R$ that naturally evolves in the
-strategy space. For a seller $j$, let $y=\theta_i'(\g_i^(a))$ for a buyer $i$. We have that, for any allocation $a$, 
+We claim there exists a binary equality relation $i\thicksim j$ that naturally evolves in the
+strategy space. For a seller $j$, let $y=\theta_i'(\g_i^j(a))$ for a buyer $i$.
+We use the the axiom of set equality,
+based on first-order logic with equality, which states that,  
+$\forall \ i\in\mcI, \ \forall \ j\in\mcI, (i\in \mcI^j \Leftrightarrow j\in\mcI_i)
+\Rightarrow i \thicksim j$, and is a logical consequence of (\ref{jtoi}).
+Then, for any allocation $a$, we may define the relation, $i\thicksim
+j$,
 \begin{equation}\label{eqrel}
-        R \equiv (\bar{D}_i^j(y), {\theta^j}'(\g_i^j(a))) = (\g_i^j(a),y),
+        \big(\bar{D}_i^j(y), {\theta^j}'(\g_i^j(a))\big) =
+        \big(\g_i^j(a),y)\big).
 \end{equation}
-defines equivalence $i \thicksim j$, where we use the definition of set
-equality based on first-order logic with equality. By definition, 
-$\forall \ i, \ \forall \ j, (i\in \mcI^j \Leftrightarrow j\in\mcI_i)
-\Rightarrow i \thicksim j$. This is the converse of (\ref{jtoi}). Formally, the
-axiom states that a set is \emph{uniquely} determined by its members.
-$R$ is defined by the bid price and
-reserve price of buyer $i$ and seller $j$, respectively. We
-have, for any $z\ge 0$,
-\begin{equation}\label{eqrel}
-        R \equiv i\thicksim j \equiv \theta_i'(z) - {\theta^j}'(z)\ge\epsilon
-\end{equation}
-defines equivalence $i \thicksim j$. Equivalence class $[i]$ is by definition
-the market supply at the buyers' valuation $\theta_i'$. Clearly, $k\thicksim k,
-\ \forall \ k\in\Delta$, and $\epsilon \ge \theta_i'(z) - {\theta^j}'(z)$
-%, and by (\ref{newprice}), $j\in\Lambda$ cannot set a higher reserve price, 
-%and cannot sell more data than the buyers' aggragated bid quantities.
-The result follows by symmetry, and as the buyers' bids are
-truthful, and by (\ref{newprice}),Lemma \ref{userunion} and Lemma
-\ref{buyercoordinate}.$\qed$\\
+Formally, the axiom states that a set is \emph{uniquely} determined by its
+members. It follows that $\thicksim$ defines equality of bids using a static
+analysis with respect to equilibrium, where all users who are not changing thier
+bids are considered equal.\\
+\textbf{Remark:} Equality is both an equivalence relation and a partial order,
+and therefore is reflexive, transitive, symmetric and antisymmetric. \\
+Now, we may define the mapping $s \mapsto [s]$,
+\begin{equation}\label{indeqrel}
+         1_\vartheta \equiv \theta_i'(z) - {\theta^j}'(z) > \epsilon,
+\end{equation}o
+noting that equality in the bid quantity is implicity satisfied and $z =
+\bar{D}_i^j(y)\ge 0$. We have that $\vartheta$ is a price relation for a
+buyer-seller pair. Without loss of generality, let $S = \Pi_{j\in\mcI} \big(
+\Pi_{i\in\mcI} S_i^j$. The indicator function is the canonical mapping,
+$1_\vartheta : S \rightarrow \lbrace{0,1\rbrace}$. Then, as the product
+topology is preserved, the set of all indicator
+functions on $S$ naturally forms the power set $\mathcal{P}(S) = S_i\times
+S_{-i}$. Additionally, the set of all equivalence classes defines the quotient space, $S /
+\thicksim \ \equiv \big\lbrace [k] : k\in\mcI \big\rbrace$, forming a partition
+$P = \big\lbrace [s] : s\in S\big\rbrace$ of $S$. 
 
-The ease by which the game is constructed is a consequence of the the cartesian
-product on a 2-dimensional message space.
-
-The reserve price $\epsilon$ acts as a placeholder for a seller submitting an
-auction to the ISP. As was proven in \cite{lazar}, the positive reserve price allows us to
-restrict our analysis to continuous, truthful bids. The strategy space of
-truthful bids is a collection of truthful bid, or ``strategy", vectors.
-From the original proof by \cite{lazar}, we observe that the collection of
-unconstrained truthful bids, $T_i = \Pi_{j\in\mcI} T_i^j$, may not be a subset
-of the collection of $\epsilon$-best replies, $\Pi_{\in\mcI} S_i^\epsilon$.         
-%An essential component of determining the existence of a Nash equilibrium is 
-For this work, it suffices to show the continuity of the set of truthful
-$\epsilon$-best replys, which we will denote $B_i^\epsilon = T_i\cap S_i^\epsilon$, in opponent bid profiles $S_{-i}$. 
 
 {
-\lemma{(Continuity of $\epsilon$-best reply on $\Delta$)}
+\proposition{(Continuity of $\epsilon$-best reply on $\Delta$)}
 Let $\Delta$ be defined as in Lemma (\ref{userunion}). For any buyer
 $i\in\lambda^j$, the collection of bids $B_i$ is continuous in $S_{-i}$
 }\\
@@ -1757,11 +1789,14 @@ $\bar{P}_i(z, s_{i}) = \underline{P} = \epsilon -\varrho$, where $\epsilon$ is
 the bid fee, and $\varrho$ is $i$'s liability estimate for auction $j\in\mcI$. 
 We observe that $\g_i \circ B_i^\epsilon$ is simply $B_i^\epsilon$ restricted to seller pool
 $\mcI_i$, i.e. $\g_i \circ B_i^\epsilon \equiv B_i^\epsilon\vert_{\mcI_i}$ . Thus,
-we have $\g_i \circ T_i = ([0,D^k]_{k\in\mcI^j}\times [0,\g_i \circ \overline{P}])$
-is a product of closed subsets of compact sets. Then, as a closed
-subset of a compact set is compact, and by Tychonoff's theorem, $\g_i \circ
-B_i^\epsilon$
-is compact subset of $B_i^\epsilon$. Now, letting $\overline{P} = \max_{i\in\lambda^j} \theta_i'(0)$, and we have by
+we have $\g_i \circ T_i = ([0,D^k]_{k\in\mcI^j}\times [0,\g_i \circ
+\overline{P}]^{\vert \mcI^j\vert})$
+is a product of closed subsets of compact sets. Now, we have that a closed
+subset of a compact set is compact and the resulting product topology gives
+Tychonoff's theorem. every product of a
+compact space is compact, we have $\g_i \circ B_i^\epsilon$
+is compact subset of $B_i^\epsilon$.
+ Now, letting $\overline{P} = \max_{i\in\lambda^j} \theta_i'(0)$, and we have by
 definition of $\Delta$ and the product, 
 \begin{align*}
     \g_i \circ& S_i(s_{-i}) \equiv g_i\vert_{\Lambda^j} : S_i \mapsto S_i \\
@@ -1782,7 +1817,13 @@ s_{-i}\in S_i : \ \forall \ z > 0, \overline{P} \ge P_i(z,s_{-i}) \ge
 independent vectors or, equivalently, as the minimal number of vectors that span
 the space
 
-We now restrict our analysis to truthful $\epsilon$-best replies, $B^\epsilon$.
+%We have proven that buyers will submit bids according to their marginal
+%valuations. Now, in the interest of completeness (BAD SENTENCE), 
+We have that all bids represent $\epsilon$-best replies, and, as was proven in
+\cite{lazar}, the sellers' positive reserve price implies that bids are
+truthful. Finally, by properties determined by the construction of a mixed strategy
+symmetric game with a 2-dimensional message space, we may now restrict our
+analysis to the set of continuous, truthful, $\epsilon$-best replies, $B^\epsilon$.
 
 {
 \corollary{Hemicontinuity of $\Delta$}
@@ -1847,7 +1888,7 @@ user, where users are acting according to their respective strategies, the multi
 (CAN'T DO THIS, NOT THE SAME TYPE OF GAME?)
 As $\theta_i'$ is continuous, as was shown in Lemma \ref{uservaluation}, and
 $t=[t_i^j] \in \lambda^j \times \Lambda^j$ is continuous in $s$ on
-$T=\Pi_{k\in\Lambda^j} T_k$. Now, $t$
+$T_k=\Pi_{k\in\Lambda^j} T_k^j$. Now, $t$
 represents a continuous mapping of $[0,\sum_{k\in\Lambda^j} D^k]_{i\in\lambda^j}$ onto itself,
 and we may use Brouwer's fixed point theorem, as in \cite{semret},
 
@@ -1870,6 +1911,11 @@ is disjoint.
 Nonetheless, we claim that our mechanism is normative, that irrelevant
 alternatives should not matter, it is practical, uses minimal information,
 strategy, and provides the right incentives for the truthful revelation of individual preferences. 
+
+The rules of the PSP
+multi-auction drive market mutations that evolve and are regulated by the user
+strategies.
+(HERE)
 
 (DEFINITION.. USE?)
 In the General Symmetric Game, p is an evolutionarily stable mixed strategy if
