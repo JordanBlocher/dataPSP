@@ -1,0 +1,186 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{11}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{??}{fed}{2016}]%
+        {fedbill}
+ \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{No Rate Regulation of Broadband Internet Access
+  Act}.
+\newblock  \bibinfo{volume}{114th Cong}, \bibinfo{number}{H.R. 2666}
+  (\bibinfo{year}{2016}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{cab}{2018}]%
+        {cabill}
+ \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Communications: broadband Internet access service}.
+\newblock  \bibinfo{volume}{Reg. Sess. 2017-2018}, \bibinfo{number}{S.B. 822}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Anon}{Anon}{[n. d.]}]%
+        {att}
+\bibfield{author}{\bibinfo{person}{Anon}.} \bibinfo{year}{[n. d.]}\natexlab{}.
+\newblock \bibinfo{title}{AT\&T Mobile Share Flex Plans}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.att.com/plans/wireless/mobile-share-flex.html}
+\showURL{%
+Retrieved 2018 from \tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Brandt and Sandholm}{Brandt and
+  Sandholm}{2008}]%
+        {felix}
+\bibfield{author}{\bibinfo{person}{Felix Brandt} {and} \bibinfo{person}{Tuomas
+  Sandholm}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{On the Existence of Unconditionally
+  Privacy-Preserving Auction Protocols}.
+\newblock \bibinfo{journal}{\emph{2008 ACM Trans. Inf. Sys. Secur.}}
+  \bibinfo{volume}{11}, \bibinfo{number}{2} (\bibinfo{date}{January}
+  \bibinfo{year}{2008}), \bibinfo{pages}{1--21}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1330332.1330338}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Lazar and Semret}{Lazar and Semret}{2000}]%
+        {lazar}
+\bibfield{author}{\bibinfo{person}{A.~A. Lazar} {and} \bibinfo{person}{N.
+  Semret}.} \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{Design and Analysis of the Progressive Second Price
+  Auctions for Network Bandwidth Sharing}.
+\newblock \bibinfo{journal}{\emph{Telecommunication Systems, Special Issue on
+  Network Economics}} (\bibinfo{year}{2000}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Maillé and Tuffin}{Maillé and
+  Tuffin}{2004}]%
+        {burst}
+\bibfield{author}{\bibinfo{person}{Patrick Maillé} {and}
+  \bibinfo{person}{Bruno Tuffin}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Multi-bid auctions for bandwidth allocation in
+  communication networks}.
+\newblock \bibinfo{journal}{\emph{IEEE INFOCOM}} (\bibinfo{year}{2004}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/infcom.2004.1354481}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Pinheiro, Chaves, Cerqueira, and
+  Abelém}{Pinheiro et~al\mbox{.}}{2013}]%
+        {meta}
+\bibfield{author}{\bibinfo{person}{Billy Pinheiro}, \bibinfo{person}{Rafael
+  Chaves}, \bibinfo{person}{Eduardo Cerqueira}, {and}
+  \bibinfo{person}{Antônio~Jorge Abelém}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{CIM-SDN: A Common Information Model
+  extension for Software-Defined Networking}}.
+\newblock 836--841 pages.
+\newblock
+\showISBNx{978-1-4799-2851-4}
+
+
+\bibitem[\protect\citeauthoryear{Qu, Jia, , and Caines}{Qu
+  et~al\mbox{.}}{2007}]%
+        {qpsp}
+\bibfield{author}{\bibinfo{person}{Clare~W. Qu}, \bibinfo{person}{Peng Jia},
+  \bibinfo{person}{}, {and} \bibinfo{person}{Peter~E. Caines}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Analysis of a Class of Decentralized Decision
+  Processes: Quantized Progressive Second Price Auctions}.
+\newblock \bibinfo{journal}{\emph{46th IEEE Conference on Decision and
+  Control}} (\bibinfo{year}{2007}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/cdc.2007.4434926}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Semret}{Semret}{1999}]%
+        {semret}
+\bibfield{author}{\bibinfo{person}{Nemo Semret}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \emph{\bibinfo{title}{Market Mechanisms for Network Resource
+  Sharing}}.
+\newblock \bibinfo{thesistype}{Ph.D. Dissertation}. \bibinfo{school}{Columbia
+  University}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Semret, Liao, Campbell, and Lazar}{Semret
+  et~al\mbox{.}}{2000}]%
+        {diffserve}
+\bibfield{author}{\bibinfo{person}{Nemo Semret}, \bibinfo{person}{R.~R.~F.
+  Liao}, \bibinfo{person}{A.~T. Campbell}, {and} \bibinfo{person}{A.~A.
+  Lazar}.} \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{Pricing, provisioning and peering: dynamic markets
+  for differentiated Internet services and implications for network
+  interconnections}.
+\newblock \bibinfo{journal}{\emph{IEEE Journal on Selected Areas in
+  Communications}} \bibinfo{volume}{18}, \bibinfo{number}{12}
+  (\bibinfo{date}{December} \bibinfo{year}{2000}), \bibinfo{pages}{2499--2513}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/49.898733}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zheng, Joe-Wong, Tan, Ha, and Chiangs}{Zheng
+  et~al\mbox{.}}{2015}]%
+        {zheng}
+\bibfield{author}{\bibinfo{person}{Liang Zheng}, \bibinfo{person}{Carlee
+  Joe-Wong}, \bibinfo{person}{Chee~Wei Tan}, \bibinfo{person}{Sangtae Ha},
+  {and} \bibinfo{person}{Mung Chiangs}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Secondary markets for mobile data: Feasibility and
+  benefits of traded data plans}.
+\newblock \bibinfo{journal}{\emph{2015 IEEE Conference on Computer
+  Communications (INFOCOM)}}, \bibinfo{pages}{1580--1588}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/infocom.2015.7218537}
+\showDOI{\tempurl}
+
+
+\end{thebibliography}

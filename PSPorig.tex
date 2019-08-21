@@ -1,0 +1,113 @@
+%\iffalse
+\section{Distributed Progressive Second Price Auctions}
+
+Progressive second price auctions (PSPs) were proposed
+in \cite{lazar}, \cite{diffserve} to provide a dynamic network service pricing
+scheme to provide consistent services for network bandwith users.
+\cite{diffserve} conducts a game theoretic analysis, deriving
+optimal strategies for buyers and brokers, and further shows the existence
+of networkwide market equilibria based on their game-theoretic
+model. Constructing necessary and sufficient conditions for the stability
+of the game allows the sustainability of any set
+of service level agreement configurations between Internet service
+providers.
+
+We begin with a brief introduction to the distributed PSP auction for bandwith
+sharing, first introduced by Lazar and Semret \cite{lazar}.
+We define a set of $\mcI = \lbrace 1,\cdots,I\rbrace$ network bandwidth users.
+Suppose each user $i \in \mcI$ makes a bid $s_i^j = (p_i^j, d_i^j)$ to the
+seller of resource $j$, where $p_i^j$ is the unit-price the user is willing to
+pay and $d_i^j$ is the quantity the user desires. The \emph{bidding profile} forms a grid, $s \equiv
+[s_i^j] \in \mcI \times \mcI$, and $s_{-i} \equiv [s_1^j , \cdots , s_{i-1}^j , s_{i+1}^j , \cdots
+, s_I^j]_{j\in\mcI}$ is the profile of user $i$'s opponents. 
+Using this classic PSP mechanism, \cite{lazar} shows that given the opponents
+bids $s_{-i}$,
+user $i$'s $\epsilon$-best response to seller $j$ is $s_i^j = (w_i^j, v_i^j)$
+and is a Nash move
+where $\epsilon > 0$ is the bid fee, $B_i =\sum_{j\in\mcI} b_i^j$ is user $i$'s
+budget, and every user has an elastic demand function.
+Based on the profile of bids $s^j = [s^j_1, \cdots , s^j_I]$, the seller applies
+an allocation rule $a(s^j) = [a_1^j, \cdots , a_I^j]$, where $a^j_i$ is the quantity allocated
+by $j$ to each user $i\in\mcI$ and $c^j_i$ is the cost charged to $i$ for
+allocations awarded in auction $j$. 
+An allocation is considered feasible if $a^j_i \le d_i^j$, and $c^j_i \le  p^j_i d_i^j$.
+
+% MECHANISM
+\subsubsection{The PSP Mechanism}\label{mechanism}
+The PSP auction as given in \cite{lazar} and \cite{semret} is designed for the
+problem of network bandwidth allocation, and is analyzed as a noncooperative
+game where $i\in\mcI$ agents buy the
+fixed amount of bandwidth $d_i^j$ from sellers $j\in\mcI$.
+The market price function (MPF) for a buyer-seller pair is,
+% MARKET PRICE
+\begin{align}\label{dataprice}
+\begin{split}
+    P_i^j(z, s_{-i})= \inf\bigg\lbrace y\ge 0 : D_i^j(y, s_{-i}) \ge z \bigg\rbrace,\\
+\end{split}
+\end{align}
+and is the of minimum prices a user bids in
+order to obtain bandwidth $z$ given opponent profile $s_{-i}$. 
+The maximum available quantity of data in auction
+$j$ at unit price $y$ given $s_{-i}^j$ is,
+% INVERSE DEMAND
+\begin{align}\label{datapriceinverse}
+\begin{split}
+    D_i^j(y, s_{-i}) &= \bigg[ D^j - \sum_{p_k^j>y,k\ne i} d_k^j  \bigg]^+,
+\end{split}
+\end{align}
+where $D^j$ is the total amount of bandwith that user $j$ has to offer.
+% DATA ALLOCATION RULE
+For each $i \in \mcI$, the allocation from auction $j$ is,
+% and so for profile $s_i$, for any $i \in \mcI$,
+\begin{align}\label{dataallocation}
+    a_i^j(s) &= \min\bigg( d_i^j, 
+    D_i^j(p_i^j,s_{-i}^j)\bigg).
+\end{align}
+Finally, we have the cost of the allocation,
+% DATA COST
+\begin{align}\label{datacost}
+    c_i^j(s) = \displaystyle\sum_{k\ne i} 
+p_k^j \big[a_k^j(0; s_{-i}^j)
+    -a_k^j(s_i^j;s_{-i}^j)\big].
+\end{align}
+
+It was shown, in \cite{lazar}, that the mechanism may converge to a Nash market
+equilibria for differentiated services
+allocated between multiple agents when all players bid their real marginal valuation
+of the bandwidth resource. In other words, the PSP constraints are
+sufficient to attain the desirable property of truthfullness through incentive
+compatibility. The pricing mechanism upholds the \emph{exclusion-compensation
+principle}, user $i$
+pays for its allocation so as to exactly cover the ``social opportunity cost"
+which is given by the declared willingness to pay (bids) of the users who are
+excluded by $i$'s presence, and thus also compensates the seller for the maximum lost potential
+revenue \cite{lazar}.
+{
+\definition{(Nash Equilibrium)}
+A Nash equilibrium is defined as a strategy vector, or, in terms of PSP, a bid
+profile $s$,
+from which no player has a unilateral incentive to deviate (Johari, 2004)
+(EXPAND?)
+}\\
+
+The PSP rules assume that an agent's valuation is represented by an elastic valuation function.
+\definition{\cite{lazar}}
+A real valued function, $\theta(\cdot): [0,\infty) \rightarrow [0,\infty)$, is an \emph{(elastic) valuation
+function} on $[0, D]$ if 
+\begin{itemize}
+    \item $\theta(0) = 0$,
+    \item $\theta$ is differentiable,
+    \item ${\theta}' \ge 0$, and ${\theta_i}'$ is non-increasing and continuous,
+     \item There exists $\gamma > 0$, such that for all $z \in [0,D]$,
+${\theta}'(z) > 0$ implies that for all $\eta \in [0, z), {\theta}'(z) \le
+{\theta}'(\eta)
+- \gamma(z - \eta)$. 
+\end{itemize}
+The function $\theta'(\cdot)$ on $[0, D]$ is called an (elastic) demand
+function.
+In the PSP market, a
+user is considered truthful if their bid price equals their marginal valuation,
+i.e. $p_i^j = {\theta_i^j}'$.
+%\fi
+
+
