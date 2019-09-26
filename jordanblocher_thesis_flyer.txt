@@ -1,0 +1,29 @@
+Jordan Blocher Thesis Defense
+
+April 29, 12:30 DMS 104
+
+Dynamical Systems: Chaotic Attractors and 
+    Synchronization using Time-Averaged Partial
+Observations of the Phase Space
+
+
+We study the synchronization of chaotic systems when the coupling
+between them contains both time averages and stochastic noise.
+Our model dynamics are given by the Lorenz equations
+which are a system of three ordinary differential
+equations in the variables X, Y and Z.
+Our theoretical results show that coupling two copies of the
+Lorenz equations using a feedback control which consistes
+of time averages of the X variable
+leads to exact synchronization provided the
+time-averaging window is known and sufficiently small.
+In the precense of noise the convergence is to within a
+factor of the variance of the noise.
+We also consider the case when the time-averaging window
+is not known and show that it is possible to tune the
+feedback control to recover the size of the
+time-averaging window.
+Further numerical computations
+show that synchronization is more accurate and occurs
+under much less stringent conditions than our theory requires.
+
