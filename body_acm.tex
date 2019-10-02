@@ -58,15 +58,14 @@ individuals closest to each other, in fact, close enough to be within wireless
 range. Alice is going on vacation, and offers to transfer her wireless signal to
 Bob. As they have the same provider, Bob agrees, and is able to use Alice's
 bandwidth, which he finds is useful during peak network
-hours. He pays a discounted rate. We note that the additional bandwith may be
-used by another device, or even a 5G-capable mobile device.
+hours. He pays a discounted rate.
 
 The secondary market provides a unique opportunity for social equilibrium, as it
 allows users to share data without sharing the same data plan, a restriction in
 most ISPs, such as \cite{att}. We reason that a secondary market effectively creates a competitive secondary market, and contributes to the
 dynamics of a free-market economy. Market competition is a desirable quality in
 free markets, and is encouraged, particularly in wireless and data services. In
-fact, California Legistature has recently passed laws promoting
+fact, California Legislature has recently passed laws promoting
 competition and enforcing fair practice of ISPs \cite{cabill}.
 Laws such as \cite{fedbill} exist to
 regulate ISPs as they have historically come close to monopolizing regional
@@ -85,7 +84,7 @@ We therefore determine that our mechanism must be (3) globally and locally priva
 The market
 topology and the user strategy are organically determined by the impact of user
 behavior on market dynamics, and so determines a minimally optimal objective
-representing user valuation globally, and so fufills an additional property of
+representing user valuation globally, and so fulfills an additional property of
 economy over time and space. To the best of our knowledge, this is the first
 work to provide a comprehensive derivation of a truthful mechanism that is self-contained within a dynamic market
 topology.
@@ -97,7 +96,7 @@ In classic mechanism design, with multiple user types, there is no single
 way to design the transformation from the direct revelation mechanism to its
 corresponding computational design. We apply a modifier to the PSP mechanism in
 order to mutate the strategy space, following dynamic user
-correspendence. As in \cite{lazar}, we take the direct
+correspondence. As in \cite{lazar}, we take the direct
 approach by guessing the right modifier, and context, such that we have the
 desired result by composition with the PSP rules. 
 As in \cite{lazar}, the incentive for a
@@ -112,14 +111,14 @@ and that our strategy profiles are natural; they depend on the ratio of
 supply and demand, or the ratio of buyers to sellers.
 
 We focus on providing users with an incentive framework, and
-so rational users choose a collaborative exchage. 
+so rational users choose a collaborative exchange. 
 The user strategies are organic in that they are natural, or
 induced by the dynamic market itself. In other words, adhering to the second-price rule,
 where price is derived from autonomous demand, we have a strategic
 progressive auction, and a multi-objective equilibria.
 This is the (built-in) transformation from the
 direct-revelation mechanism to the desired message space, Then, in the limit of
-the data-model, a user reveals its valuation of a quantitiy of data-resource over the whole range of possible demands.
+the data-model, a user reveals its valuation of a quantity of data-resource over the whole range of possible demands.
 
 We describe our auction mechanism as a
 pure-strategy progressive game with incomplete, but perfect information.
@@ -137,7 +136,7 @@ the mechanism that result in improved convergence also appear in \cite{burst},
 which relies on a global approximation function of demand.
 Another mechanism derived from game theory \cite{diffserve}, derives
 optimal strategies for buyers and brokers, and further shows the existence
-of networkwide market equilibria, based. The stability
+of network-wide market equilibria by provisioning a dynamical system. The stability
 of the game may be implied by various equilibria in distributed systems.
 
 Allowing a user preference to, loosely, represent a policy, we may interpret
@@ -145,16 +144,16 @@ a user preference from the data exchange market as a meta-policy. Then,  plans a
 framework for to implement their preferences. Several studies address the
 security of policy-based network management.
 Trusted management systems based on the
-Common Informtion Model (CIM) focus on policy-based management, namely,
+Common Information Model (CIM) focus on policy-based management, namely,
 the ``Policy-Maker" toolkit. 
 In general, the translation of policy-based management systems to SDN focuses on combining
 the simplicity of policy-based implementation with the flexibility of SDN, as in the
 meta-policy system, CIM-SDN \cite{meta}.
 
 In the general context of distributed and decentralized allocation of
-resources, a variety of equilibria exist for heterogeous and homogenous services
-with the similar condition of truthfullness. In all cases, the PSP constraints are
-sufficient to attain the desirable property of truthfullness through incentive
+resources, a variety of equilibria exist for heterogeneous and homogeneous services
+with the similar condition of truthfulness. In all cases, the PSP constraints are
+sufficient to attain the desirable property of truthfulness through incentive
 compatibility, as the pricing mechanism upholds the exclusion-compensation
 principle.
 
@@ -163,7 +162,7 @@ principle.
 \subsection{The Secondary Market}
 
 We construct the model for a PSP data auction for mobile users
-particpating in secondary mobile data exchange market.
+participating in secondary mobile data exchange market.
 Let the set of all wireless users to be labeled by
 the index set $\mcI = \lbrace 1, \cdots, I\rbrace$. In our current formulation, we do not allow a seller to host multiple
 auctions, thus we may assume that data is a unary resource belonging to the seller, and
@@ -181,7 +180,7 @@ mechanism in the secondary market.
 We emphasize that we allow the grid $s$ to represent the bids of all buyers and
 sellers. In general, we will not reference the full grid. In order to emphasize
 that a bid belongs to a seller, we use the notation $\s_i^j$. We
-will also empasize the \emph{context} of the bid to indicate the user type.
+will also emphasize the \emph{context} of the bid to indicate the user type.
 To further clarify our analysis, we adopt the notational conventions: a
 seller's profile is denoted by $\s^j = [s_i^j]_{i\in\mcI}$, and $s_i =
 [s_i^j]_{j\in\mcI}$ denotes a buyer's profile, where $s_{-i} \equiv [s_1^j , \cdots , s_{i-1}^j , s_{i+1}^j , \cdots
@@ -206,13 +205,13 @@ Suppose $i$ is buying from $j$. We assume that a user's budget is
 sufficient, as the alternative would be to pay a higher price to the ISP. The bid is represented by $s_i^j = (d_i^j, p_i^j)$, 
 meaning $i$ would like to buy from $j$ a quantity $d^j_i$ and is willing to pay
 a unit price $p^j_i$. 
-Seller $j$'s local auction begins at time $t>0$. The seller takes reponsibility
+Seller $j$'s local auction begins at time $t>0$. The seller takes responsibility
 to send opponent bid profiles $s_{-i}$ to each buyer that joins the auction,
 those buyers where $s_i^j > 0 \in s$, as well its own bid, $\s_i^j = (d_i^j,
-p_i^j)$, offfering quantity $d_i^j \in d^j = [d_i^j]_{i\in\mcI}$, 
+p_i^j)$, offering quantity $d_i^j \in d^j = [d_i^j]_{i\in\mcI}$, 
 with reserve unit price $p_i^j \in p^j = [p_i^j]_{i\in\mcI}$. 
 Naturally, in a live auction, if a buyer does
-not submit a bid to a seller, then this implies $s_i^j=\s_i^j = 0$. A buyer that does not submit a bid will not recieve opponent profiles from seller
+not submit a bid to a seller, then this implies $s_i^j=\s_i^j = 0$. A buyer that does not submit a bid will not receive opponent profiles from seller
 $j$. We additionally determine that a user who does not submit a bid is holding
 to the previous bid, either zero or nonzero. We note that buyers are
 consistently referenced using the index $i$ as a subscript, and sellers using
@@ -246,53 +245,25 @@ determines the bidding behavior of users in a wireless network.
 The auction design must must meet a certain set of known
 criteria: (1) \emph{truthfulness}, (2) \emph{individual rationality/
 selfishness}, (3) \emph{social welfare maximization}, and (4)\emph{the winning
-bid is persistent private information}. For the secondary data exchange
+bid is anonymous}. For the secondary data exchange
 market, we determine that the
 strategy space must meet additional criteria: (5) \emph{privacy and
 independence from the ISP}, (6) \emph{locally fair division}, and (7)
 \emph{minimize crossover in buyer/ seller pools}.
-Thus, we propose a mechanism that promotes social welfare. 
 Thus our motivation to adapt the PSP auction. The PSP auction given in
 \cite{lazar} is comprised of a set of simple and symmetric rules that closely
-follow market theory, and as it is distributed we can require privacy.
-
-We first address the clear need for privacy in the secondary data exchange market. In \cite{zheng},
-it is assumed that the ISP interferes in 2cm (market) dynamics, and will maximize the
-gap between supply and demand in each transaction, exacting the difference as
-revenue. We notice that this market behavior is suspiciously monopolistic, as a
-single entity, the ISP, holds a global market power. It is further claimed in
-\cite{zheng} that user bids are truthful as they are guaranteed to receive
-their bid. We argue that this model represents an ``unwitting" buyer and an
-equally uninformed seller, as they have no intution of fair market value.
-Thus, in the interest of social good, we aim to provide a method to arrest
-anti-competitive conduct by ISPs. Then, we may trust the ISP. Naturally,
-rational users will only purchase data if the rewards outweigh the risk, it follows that
-the secondary auction should be trusted as well. 
-We argue that as the mechanism is also privacy-preserving, that both the users and the ISP benefit.
-An ISP that is trusted will end up with a loyal customer base, taking profit
-from to one that is revenue maximizing, assuming that competion laws will
-prevent a monopoly.
-
-We define a value to be private if any coalition is incapable of learning any information
-besides what can be inferred from the shared computation and the coalition’s
-inputs. We describe the process as given in \cite{felix}. In general, a distributed private
+follow market theory, and as it is distributed we can require privacy. We describe the process as given in \cite{felix}. In general, a distributed
 computation, where buyer $i$ is part of a coalition comprising auction $j$, is as follows: 
 
 Denoting $m_{-i} = [(s_i^j, r_i), m_1, \cdots, m_n]_{k\ne i\in \mcI}$, buyer sends a
 message to each of its opponents, where $s_i^j$ is $i$'s bid, $r_i$
 is an independent random value, and $m_1, \cdots, m_n$ the messages $i$ has
-received so far.
-Then, all buyers are able to confirm the winning bid $s_{\bar{i}}^*$. 
-
-The
-private computation process requires that buyers connect with each other, and
-so reveal their identities to the coalition. It was proven in \cite{felix} that full privacy is not possible in a second
-price auction, even if we allow partial relevation and weak coalitions. Yet, we
-claim that our mechanism is trustworthy:
+received so far. Then, all buyers are able to confirm the winning bid $s_{\bar{i}}^*$. 
+It was proven in \cite{felix} that full privacy is not possible in a second price auction, even if we allow partial revelation and weak coalitions. We propose anonymity, in the winning bid only.
 
 \subsubsection{Buyers are anonymous}
 In our secondary market, we have that any local auction is anonymous by definition, as a permutation of
-the valuations resutls in a permutation of allocations and prices, equivalently,
+the valuations results in a permutation of allocations and prices, equivalently,
 exchanging the bids of two losing buyers does not change the auction's result.
 Formally,
 \definition{(Anonymous auction)} \cite{felix}
@@ -310,22 +281,19 @@ $$
     \lbrace r_i\rbrace_{i\in T}\big)),
 $$
 which states that any two inputs, the messages seen by coalition $T$
-are indentically distributed.
+are identically distributed.
 
-\subsubsection{The winning bid is persistent private information.}
-We claim that a buyer's trust in a local auction is fufilled when the outcome of
-the auction is guaranteed to be correct, and if the winner's identity is secret.
-For each local auction, we define a coalition of the
-participating buyers. The winning bidder is \emph{privately} chosen by
-distributing the computation of the winner to the local coalition. The
-computation is based on the homomorphicity of secret sharing. We present the
-Lemma in its general form,
+\subsubsection{The winning bid is trusted (anonymous) information.}
+We claim that a buyer's trust in a local auction is fulfilled when the outcome of
+the auction is guaranteed to be correct, and if the winner's identity remains private information. For each local auction, we define a coalition to be the
+participating buyers. The winning bidder is chosen by
+distributed computation via homomorphic encryption. We present the Lemma in its general form,
 {
 \lemma{(Benaloh 1987)}\label{modp} \ 
     $f(x_1, x_2, \cdots, x_n) = \sum_{i=1}^n x_i \mod p$ is privately
     computable.
 }
-Thus, it is possible to privately compute,
+Thus, it is possible to anonymously compute,
 \begin{equation}\label{winner}
     \omega = \max([p_i^j]_{i\in\mcI^j}) = (p_1^j, p_2^j, \cdots, p_n^j, \argmax(p^j).
 \end{equation}
@@ -358,39 +326,25 @@ some fixed time in the bid progression, where $D^j > 0$.
 
 
 The winning buyer then leaves the auction, and so we have that the privacy of
-the winning bid is persistent. We note that it is possible for a winner to
-anonymously rejoin an auction, however this does not alter our result.
-
-
-\subsubsection{Privacy and independence from the ISP.}
-In our model, privacy is integrated into the mechanism. Our design enforces
-privacy by hiding the reserve price of the sellers. At time
+the winning buyer is persistent. We note that it is possible for a winner to
+anonymously rejoin an auction, however this does not alter our result. At time
 $t=0$, a seller $j$ entering the market will
 submit bid $\s_\kappa^j =(D^j, \epsilon)$ to the public data exchange
 platform, and so the initial bid $\s_\kappa^j$, is public knowledge. 
-The auction
-begins at time $t>0$, and at $t=0$, $j$ will
+The auction begins at time $t>0$, and at $t=0$, $j$ will
 initializing its reserve price by executing a single bid iteration.
-Sellers do not update pricing information with the ISP, thereby hiding
-its local market price in the data-exchange market. As the ISP has limited
-information from its ``competitor", it is unable to sabatoge prices derived
-from fair market competition.
-Thus, we claim that our model supports and protects the secondary market, allowing it
-to be in direct competition with its parent ISP, and so contributes to the
-regulation of ISPs \cite{fedbill} and supports a regional free-market economy
-with respect to wireless data \cite{cabill}.
-We will assume that the cost of participating in the secondary market is
-absorbed by the bid fee, which could represent data used in submitting bids, or
-a fee charged per unit of data, or a flat rate charged at the completion of the
-purchase. We do not model ISP revenue, but assume it may be extracted from the
-bid fee at $t=0$.
+
+%We will assume that the cost of participating in the secondary market is
+%absorbed by the bid fee, which could represent data used in submitting bids, or
+%a fee charged per unit of data, or a flat rate charged at the completion of the
+%purchase. We do not model ISP revenue, but assume it may be extracted from the bid fee at $t=0$.
 
 We now proceed to formally define the PSP auction, which determines the actions 
 buyers and sellers in the secondary market, and which we will denote the \emph{data}
 PSP rules. 
 We define an \textbf{opt-out function}, $\g_i$, associated with a buyer $i$ as
-part of its type. Buyer $i$, when determining how to aquire a possible allocation $a$,
-will determine its bid quanities by,
+part of its type. Buyer $i$, when determining how to acquire a possible allocation $a$,
+will determine its bid quantities by,
 \begin{equation}\label{opt-out}
     \g_i(a) = [\g_i^j(a)]_{j\in\mcI}.
 \end{equation}
@@ -413,11 +367,11 @@ s_{-i}^j) \\
     {D_i^j}(y,s_{-i}^j) \ge \g_i^j(z) \bigg\rbrace \bigg),\\
 \end{split}
 \end{align}
-and is interpreted as the aggragate of minimum prices that buyer $i$ bids in
+and is interpreted as the aggregate of minimum prices that buyer $i$ bids in
 order to obtain
 data amount $z$ given opponent profile $s_{-i}$. We note that in the following
 analysis
-the total minimum price for the buyer cannot be an aggragation of the
+the total minimum price for the buyer cannot be an aggregation of the
 \emph{individual} prices of the buyers, as it is possible that the reserve prices
 of the sellers may vary.\\
 \textbf{Remark:} We further note that except at points of discontinuity, from
@@ -448,7 +402,7 @@ s_{-i}^j) \\
 \end{split}
 \end{align}
 We note that
-the total price cannot be an aggragation of the
+the total price cannot be an aggregation of the
 \emph{individual} bid prices as it is possible that the reserve prices
 of the individual sellers may vary, which contradicts
 (\ref{buyerinversedemand}) and (\ref{sellerinversedemand}).\\
@@ -520,21 +474,48 @@ comes from the idea of potential games. In potential games, the
 incentive of all users to change strategy can be expressed as a single global
 function. We map the incentive of a buyer over all auctions $j\in\mcI$ to a
 single potential function. This is a standard method that is used often, as it
-simplfies the analysis of both strategy and auction design. We will prove the necessary condition of an $\epsilon$-best
+simplifies the analysis of both strategy and auction design. We will prove the necessary condition of an $\epsilon$-best
 reply: a new bid price must differ from the last by at least $\epsilon$.
 Thus, our strategic bid is an $\epsilon$-best response.
 
 %\section{Strategic Framework}
 \subsection{User Valuation (Strategic Incentive)}
 
+In any market, a buyer or seller would like to obtain the maximum amount of utility 
+possible while staying within budget. The buyer's utility maximizes the amount of 
+data allocated by the seller, while the seller's utility maximizes the cost of the 
+data sold.
+We may illustrate the resulting product space for the buyer,
+\vspace{-0.3in}
+{
+\begin{center}\begin{figure}[H]\caption{Product / Quotient Space}
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  {
+     a & p \\
+     d &  \\};
+  \path[-stealth]
+    (m-1-1) edge node [left] {projection} (m-2-1)
+            edge node [above] {level} (m-1-2)
+    (m-1-2) edge [dashed,-] (m-2-1);
+\end{tikzpicture}
+\end{figure}\end{center}
+}
+\vspace{-0.3in}
+The `level', or price associated with the buyer's bid may be projected onto a line. As we 
+will show, holds when buyers use the same bid price for all nonzero bids. The `projection',
+or the amount of data requested, is a plane, since buyers may bid in more than
+one auction. Clearly, the allocation is the product of the price and the data request.
+There is, however, another logical representation, that the buyer has found an allocation that
+satisfies its demand AND price constraints.
 We define a move to a better market position to be synonymous with a
 strategic bid. \\ 
-\textbf{Remark:} The terms ``bid" and ``strategy" are often interchangable,
+\textbf{Remark:} The terms ``bid" and ``strategy" are often interchangeable,
 from auction design and game theory, respectively.\\
 Our mechanism allows a buyer
 to \emph{opt-out} of auctions by submitting zero bids. This strategy maximizes
 utility while minimizing the number of positive bids submitted to the overall
-market. 
+market.
 % OPT-OUT BUYER
 We define each buyer as a user $i\in\mcI$ with quasi-linear utility
 function $u_i = [u_i^j]_{j\in\mcI}$, a buyers' utility function is of the form,
@@ -543,8 +524,10 @@ function $u_i = [u_i^j]_{j\in\mcI}$, a buyers' utility function is of the form,
 \end{equation}
 where the composition of the elastic valuation function $\theta_i$ with $\g_i$
 distributes a buyers' valuation of allocation $a$ across local markets (and thus
-multiple sellers).
-In this way we extend the PSP rules described
+multiple sellers). Thus, the composition map (the codomain of $\theta_i(\g_i)$ is the
+same as the domain of $\g_i(a)$) performs the function of restricting
+the buyer's domain to minimize $d^j p^j - c_i$, i.e., maximize $u_i$.
+Using this intuition, we formally extend the PSP rules described
 in \cite{semret} to design equilibria across subsets of local data-exchange markets.
 
 The sellers, $j\in\mcI$ are not associated with an opt-out function. We
@@ -575,7 +558,7 @@ ${\theta}'(z) > 0$ implies that for all $\eta \in [0, z), {\theta}'(z) \le
 - \gamma(z - \eta)$. 
 \end{itemize}
 
-The elastic valuation of users and homogenous nature of data in the secondary market, 
+The elastic valuation of users and homogeneous nature of data in the secondary market, 
 allows for continuity of constraints imposed by the user strategies. 
 We begin our analysis with buyer valuation $\theta_i$.
 A buyers' valuation of an amount of data represents how much a buyer is willing
@@ -623,8 +606,8 @@ price.
 
 The valuation of any user must be modeled as a function of the entire
 marketplace. 
-Naturally, a buyers' valuation is aggragated over local markets, and the
-sellers' valuation is aggragated over its own auction. We have already introduced the composition $\theta_i
+Naturally, a buyers' valuation is aggregated over local markets, and the
+sellers' valuation is aggregated over its own auction. We have already introduced the composition $\theta_i
 \circ \g_i$ as the valuation of the buyers.
 We further show that user valuation satisfies the conditions for an
 elastic demand function, with valuations based on
@@ -650,7 +633,7 @@ Now, we may define seller $j$'s valuation in terms of revenue,
 \end{equation}
 We have that $\theta_i$ and $\theta^j$ are elastic valuation functions, with
 derivatives
-${\theta_i}$ and ${\theta^j}'$ satisfing the conditions of elastic demand.
+${\theta_i}$ and ${\theta^j}'$ satisfying the conditions of elastic demand.
 }
 \proof{
 Let $\xi$
@@ -703,11 +686,7 @@ its data. Therefore,
     \displaystyle\sum_{i\in\mcI} \g_i^j(a) \ge D^j \quad\text{and}\quad
 \sum_{j\in\mcI} d^j_i \ge D_i,
 \end{equation}
-which holds $\forall \ i,j\in\mcI$. We will assume that buyers and sellers do not overbid, and so omit this
-constraint from our formulation.
-Thus, at equilibrium all users are satisfied, and 
-$D^j = D_i$, although we observe that this result
-does \emph{not} imply that $s_i=\nu^j$. 
+which holds $\forall \ i,j\in\mcI$. We will assume that buyers and sellers do not overbid, and so omit this constraint from our formulation. Thus, at equilibrium all users are satisfied, and $D^j = D_i$, although we observe that this result does \emph{not} imply that $s_i=\nu^j$. 
 
 Finally, it is worth mention that the analysis of the auction as
 a game assumes some forms of demand and supply, in order to derive properties.
@@ -718,9 +697,9 @@ valuation.
 
 Buyers and sellers are able
 to change their bid strategies asynchronously and serially.
-A users' local strategy space is therefore nondeterministic, and the prefererences of users
+A users' local strategy space is therefore non-deterministic, and the preferences of users
 are subject to change, i.e. binary dependence.
-Then, from \emph{Arrow's Theorem}, we have that no deterministic strategy can
+Then, from Arrow's Theorem, which states that no deterministic strategy can
 provide a mapping of the preferences of users into a market-wide (complete
 and transitive) strategy. As individual bids cannot map to a general objective, a better market
 position can only be determined by an adaptive strategy.
@@ -729,7 +708,7 @@ We provide a game-theoretic model of a real market progression, which we use to
 derive, then define, adaptive variables. 
 
 Assuming equal bandwidth for all users, we derive a globally optimal strategy suited for
-users with local information in a distrubuted data-sharing model. 
+users with local information in a distributed data-sharing model. 
 In a multi-auction market, each auction a buyer joins has the potential to
 decrease the potential cost of its data. However, increasing the size of the
 auction implies a certain risk, which we may interpret as a potential and
@@ -748,7 +727,7 @@ the cost of adding additional users to their subsequent pools.
 
 \subsubsection{Minimize crossover in buyer/ seller pools.}
 Buyer $i$'s seller pool is determined by minimizing $n$, and is the smallest set of sellers that
-allows for a coordinated bid, and the aggragate bids satisfy its demand, $D_i$.
+allows for a coordinated bid, and the aggregate bids satisfy its demand, $D_i$.
 \begin{align}
 \begin{split}\label{buyercoordinate}
     \min\big\lbrace n \in \mcI \ &\vert \ n D^n\ge D_i \big\rbrace. 
@@ -779,7 +758,7 @@ It is clear that an unconstrained
 market, even with a finite number of users, could suffer from the
 expense of many local auctions trading an infinitely divisible resource, thus
 $\varrho$ is interpreted as
-the ``liability" component of $\epsilon$ attempts to regulate network congestion. 
+the ``liability" component of $\epsilon$, and attempts to regulate network congestion. 
 
 \subsubsection{Buyer Strategy}
  
@@ -799,9 +778,9 @@ We define $j^* = n \le I$ represent the seller with the least amount of data
 $\in\mcI_i$, i.e. $D^{j^*} \le D^j, \ \forall\ j \in\mcI^j$.
 We define the composition,
 $$
-     \g_i^j \circ a = \g_i^j(a) = \frac{a_i^j}{j},
+     \g_i^j \circ a = \g_i^j(a) = \frac{a_i^j}{\vert \mcI_i \vert},
 $$
-to be the buyer strategy with respect to quantity.
+to be the buyer strategy with respect to quantity for all sellers $j\in\mcI_i$.
 We propose the following strategy. We include the proof in Appendix $A$.
 % BUYER STRATEGY
 {
@@ -816,10 +795,8 @@ Define,
 \end{equation}
 and bid price $p_i^j = \theta_i'(\g_i^j(a))$.
 Now, (\ref{opt-eq}) holds $\forall \ j\in\mcI$.
-}
-
-
-Each time step, $\s^j$ is updated it is shared with all
+}\\
+Each time step, $s^j$, the vector of bids held by auction $j$, is updated it is shared with all
 participating buyers. At this point buyers have the opportunity to bid again,
 where a buyer that does not bid again is assumed to hold the same bid, since a
 buyer dropping out of the auction will set their bid to $s_i^j=(0,0)$.
@@ -867,7 +844,7 @@ A truthful bid implies that the new bid price differs from the last bid price by
 $\epsilon$. As a seller must distribute bid vectors to all
 buyers in its auction, we reason that the seller may employ a strategic caveat.
 The seller will notify a buyer who is subject to a market shift by changing its
-bid at the appropate index.
+bid at the appropriate index.
 
 \subsubsection{Seller Strategy}
 In order to
@@ -1072,13 +1049,10 @@ We may identify $\Delta$ by its dominant seller, and we denote $\Delta^j = \Lamb
 \cup \lambda^j$.
 
 Consider the set $\lambda^j$. For some buyer $i\in\mcI^j$, and then for
-some seller $k \in \mcI_i$, we have a buyer $l \in \mcI^k$. By (\ref{jtoi}), $i,l \in \mcI^k$, and so the reserve price $p_*^k \le \min(p_l^*,
-p_i^*)$, and $k, j\in \mcI_i\Rightarrow p_i^* \ge \max(p_*^k, p_*^j)$.
-Suppose that $l \ni \mcI^j\Leftrightarrow j \ni \mcI_l$, so
-that $p_l^* < p_*^j$, and
+some seller $k \in \mcI_i$, we have a buyer $l \in \mcI^k$. By (\ref{jtoi}), $i,l \in \mcI^k$, and so the reserve price $p_*^k \le \min(p_l^*, p_i^*)$, and $k, j\in \mcI_i\Rightarrow p_i^* \ge \max(p_*^k, p_*^j)$. (NEED ALICE AND BOB) Suppose that $l \ni \mcI^j\Leftrightarrow j \ni \mcI_l$, so that $p_l^* < p_*^j$, and
 the valuation of buyer $l$ does not impact auction $j$ and vice versa, i.e. $\theta_l^j = 0$. Since $l\in\mcI^k$, $p_l^* \ge p_*^k\Rightarrow
-p_*^k < p_*^j$, and $i\in\mcI^j \Rightarrow p_i^* \ge p_*^j$. Therefore, we
-have that the ordering implied by (\ref{lambda}) and (\ref{llambda}) hold,
+p_*^k < p_*^j$, and $i\in\mcI^j \Rightarrow p_i^* \ge p_*^j$ (AGAIN ALICE AND BOB). Therefore, we
+have that the ordering implied by (\ref{lambda}) and (\ref{llambda}) holds,
 where,
 \begin{equation}\label{ordering}
     p_*^k \le p_l^* < p_*^j \le p_i^*,
@@ -1088,21 +1062,17 @@ p_*^j$. In the case where $p_l^* > p_i^*$, we must have that
 $\exists \ q \in \mcI_l$ such that $p_*^q > p_*^k$, % \Rightarrow \theta_l^q > \theta_l^k$. 
 which implies, again by (\ref{maxbid}), $q\ni\mcI_i \Leftrightarrow i
 \ni\mcI^q \Rightarrow p_*^q >
-p_i^*$, therefore $\theta_i^q = 0$, and the reserve price of auction $q$ does not effect the valuation of
-buyer $i$, and as $p_*^k < p_*^j \le p_i^* < p_l^*$, we examine $\mcI^j$ using
-(\ref{iff}).
+p_i^*$, therefore $\theta_i^q = 0$, and the reserve price of auction $q$ does not effect the valuation of buyer $i$, and as $p_*^k < p_*^j \le p_i^* < p_l^*$, we examine $\mcI^j$ using (\ref{iff}).
 Lastly, in the case where $p_i^* > p_l^*$, by the same reasoning, $\theta_l^g =
 0$, for some $g\in\mcI_i$.
-We have that for any $l\in\mcI^k$ such that $l\ni
-\mcI^j$, $\theta_l^j =0$, and when $l\in \mcI^j$, then either $\theta_i^q =0$,
+We have that for any $l\in\mcI^k$ such that $l\ni \mcI^j$, $\theta_l^j =0$, and when $l\in \mcI^j$, then either $\theta_i^q =0$,
 where $q\in\mcI_l$, or $\theta_l^g = 0$, where $g\in\mcI_i$, and as $p_*^k <
 p_*^j \le p_l^* < p_i^*$, we examine $\mcI^k$ using (\ref{iff}),
 a shift in $\mcI^k$ causes a shift in $\mcI_i$, so that $\exists \ g\in\mcI_i$
 such that $p_*^g \ge p_*^j$. Thus, we
 determine a direct influence as $l\in\mcI^k
 \cap \Lambda^j$, such that $p_l^* > p_i^*$,
-and an indirect influence as, for any $l\in\mcI^k
-\setminus \Lambda^j$, where $p_l^* > p_i^*$ results in $i^*\in\mcI^j$ initiating a shift.
+and an indirect influence as, for any $l\in\mcI^k \setminus \Lambda^j$, where $p_l^* > p_i^*$ results in $i^*\in\mcI^j$ initiating a shift. (REALLY NEED A DIAGRAM <- USE (RATIONAL) PYTHAGOREAN THEOREM)
 
 Now, consider the subset $\Lambda^j$, by
 Proposition \ref{userunion}, a shift occurs in 2 cases. (1) If $i\in\mcI^j$
@@ -1133,7 +1103,7 @@ some fixed time $t$, and so, $\forall \ i \in\mcI^j$,
     = \int_0^{\g_i^j(a)} f_i(z) \ dz,
 \end{equation}
 therefore $\theta_i = \theta^j, \ \forall \ i \in \mcI^j$.
-Thus, any bid ouside of
+Thus, any bid outside of
 our construction
 has a zero valuation, with respect to buyers $\in\lambda$ and sellers
 $\in\Lambda$, and therefore cannot cause shifts to occur except through a
@@ -1168,8 +1138,6 @@ does not adhere to the market dynamics, so $p^\kappa > p^j +
 \epsilon, \ \forall \ j \in\mcI$, then we may absorb the overage (difference) as part of the
 bid fee.
 
-The topology of the bids in $\delta$ is key to our result. We immediately have:
-
 \subsubsection{Locally fair division.}
 We claim that the allocation $a$ by seller $j$ for a local auction at
 equilibrium is an \emph{equitable division}, a fair division where each buyer
@@ -1188,7 +1156,7 @@ following Corollary,
     The subset $\Delta\subset \mcI$ is Pareto efficient, in that no user can
     make a strategic move without making any other user worse off.
 }
-\proof{Follows directly from the result of Proposision \ref{userunion}.}
+\proof{Follows directly from the result of Proposition \ref{userunion}.}
 
 % VCG ANALYSIS
 \section{PSP Analysis}\label{analysis}
@@ -1215,7 +1183,7 @@ as high as the highest reserve price $p_i^j \in \mcI_i$.
 Buyer $i$'s bid then has identical bid price $p_i^j \forall \ j \in\mcI_i$. 
 We further note that $i$ optimal strategy does not require reducing its bid price to a
 minimum in each auction, where
-the bid quantity $\g_i^j(a)$ is still fufilled. The pricing rule of the PSP
+the bid quantity $\g_i^j(a)$ is still fulfilled. The pricing rule of the PSP
 auction dictates that a buyer $i$ will pay the cost of excluding other players from
 the auction, and as $i$'s bid price reflects its valuation of it data
 requirement $D_i$ across all local markets, we have identical bid prices in
@@ -1226,9 +1194,7 @@ each auction where $s_i^j>0$. Obviously, if $j\ni\mcI_i$, then $\theta_i^j = 0$.
 \lemma{(Opt-out buyer coordination)}\label{coordinationlemma} 
 Let $i\in\mcI$ be a opt-out buyer and fix all sellers' profiles $s^j$.
 For any profile $S_i = (D_i, P_i)$, let $a_i \equiv \sum_j a_i^j(s)$ be a
-tentative data
-allocation. For any fixed $S_{-i}$, a better reply for $i$ in any auction is $x_i =
-\g_i \circ (z_i,y_i)$, where $\forall \ j \in \mcI_i$,
+tentative data allocation. For any fixed $S_{-i}$, a better reply for $i$ in any auction is $x_i = \g_i \circ (z_i,y_i)$, where $\forall \ j \in \mcI_i$,
 \begin{align*}
     z_i^j &= \g_i^{j}(a), \\
     y_i^j &= \theta_i'(z_i^j).
@@ -1248,14 +1214,13 @@ The proof is left to the Appendix, as it follows closely the work in
 
 \subsubsection{Incentive Compatibility}
 
-The property of truthfullness is an essential component of equilibrium in
+The property of truthfulness is an essential component of equilibrium in
 second-price markets. The strategies described in this paper have removed the
 necessity for a user to determine its own valuation function, we intend to show that the market dynamics resulting from the
 construction of the user strategy space results in truthful bids that are optimal for all users,
 i.e. bid prices are to the marginal value as determined by market dynamics. 
 To achieve incentive compatibility, we find that the opt-out buyer must choose
-this subset so that its overall marginal value is greater than its market price.
-We have so far only made the assumption of truthful bids throughout our analysis. As was shown in Lemma \ref{userunion}, a buyer only
+We have so far only made the assumption of truthful bids throughout our analysis. As was shown in Proposition \ref{userunion}, a buyer only
 has incentive to change its bid as a result of a market shift or partial
 allocation. In a truthful reply, the term $\epsilon/\theta_i'(0)$
 ensures that a new bid price differs from the last bid price by at least
@@ -1277,7 +1242,7 @@ We have the following Proposition,
 
 {
 \proposition{(Incentive compatibility across local auctions)}\label{incentive}
-Let $\Lambda$, $\lambda$ be defined as in Lemma (\ref{userunion}), and fix time
+Let $\Lambda$, $\lambda$ be defined as in Proposition (\ref{userunion}), and fix time
 $t>0 \in \tau$, and fix $s^j, \ \forall \ j\in\Lambda$, and for some
 buyer $i\in \mcI^j$, let $s_l$ also be fixed $\forall \ l\ni i \in \lambda$. Define,
 \begin{align}
@@ -1298,7 +1263,7 @@ $$
 Then a (coordinated) $\epsilon$-best reply for the opt-out buyer is $t_i =
 (v_i,w_i) \in T_i\cap S_i^\epsilon(s_{-i})$, i.e., $\forall \ s_i, u_i(t_i;s_{-i}) + \epsilon \ge u_i(s_i;
 s_{-i})$.
-With reserve prices $p^j >0$, there exists a ``truthful" strategy game embeddeded
+With reserve prices $p^j >0$, there exists a ``truthful" strategy game embedded
 $\in\Delta$. Therefore, a fixed point $\in \Delta$ is a fixed point in
 the multi-auction game. 
 }\\
@@ -1307,27 +1272,19 @@ As in Lemma \ref{coordinationlemma}, we leave the proof to the Appendix.
 The strategy space is comprised of a collection of bid, or ``strategy", vectors that
 together, may be represented as a collection of potential functions, where change in buyer $i$'s
 utility, resulting from a change in strategy, equals the change in
-the local market objective of each seller $j\in\mcI_i$. These local objectives are known as potential functions, and are
-formulated by mapping the incentives of all users in a local auction to a
-single function. The goal of our analysis is to therefore construct a global potential function that encompasses
-all local markets. Then, we may determine a Nash equilibrium by finding a local
-optima of the potential function. Additionally, as the potential function also
-iterates, it may be used in an analysis of convergence. The
+the local market objective of each seller $j\in\mcI_i$. These local objectives are known as potential functions, and are formulated by mapping the incentives of all users in a local auction to a single function. The goal of our analysis is to therefore construct a global potential function that encompasses all local markets. Then, we may determine a Nash equilibrium by finding a local optima of the potential function. Additionally, as the potential function also iterates, it may be used in an analysis of convergence. The
 convergence of a Nash equilibrium results from the progression of
 $\epsilon$-best replies, where each subsequent bid is a unilateral
 improvement, provided that $t_i$ is continuous in opponent profiles.
 From the original proof by \cite{lazar}, we observe that the collection of
-unconstrained truthful bids may be a subset
-of the collection of $\epsilon$-best replies, i.e. $T_i\subset S_i^\epsilon$.         
+unconstrained truthful bids may be a subset of the collection of $\epsilon$-best replies, i.e. $T_i\subset S_i^\epsilon$.         
 %An essential component of determining the existence of a Nash equilibrium is 
 For this work, it suffices to show the continuity of the set of truthful
 $\epsilon$-best replies in the set of opponent bid profiles.
 In order to address continuity in a global sense, we must demonstrate
 continuity in the construction of our model.
-Thus, we extend our analyis to be all-inclusive, %The game-theoritical basis of our argument is complemented by an abstract-theoretical analysis.
-a.nd determine the
-existence and ``uniqueness" of a global market objective by rigor of mathematical construction. Thus, we begin with the definition of
-correspondence,
+Thus, we construct an extension %to be all-inclusive, The game-theoretical basis of our argument is complemented by an abstract-theoretical analysis.
+and determine the existence and uniqueness of a global market objective by mathematical correspondence. We begin with the definition of correspondence,
 {
 \definition{(Correspondence)}
 A correspondence is mathematically defined as an ordered triple $(X,Y,R)$, where $R$ is a relation from $X$ to
@@ -1340,90 +1297,118 @@ S_i\times S_{-i}$. The classic
 example of a correspondence in our model is the buyers' best response
 $B_i^\epsilon$, where, for the multi-auction,
 $S_i$ and $S_{-i}$ are built by repeatedly using the
-cartesian product over bid profiles. The power set 
+Cartesian product over bid profiles. The power set 
 $S_{-i} =\Pi_j \big(\Pi_{k\ne i} S_i^j)$ arises naturally from the
 product of ordered sets. 
 The best response is a reaction correspondence
-defined by the mixed-strategy game. Denoting  $B_i^\epsilon = T_i\cap
-S_i^\epsilon$, is the set of truthful $\epsilon$-best replies in opponent bid
+defined by the mixed-strategy game. Denoting  $T_i^\epsilon = T_i\cap
+B_i^\epsilon$, is the set of truthful $\epsilon$-best replies in opponent bid
 profiles $S_{-i}$. \\
 \textbf{Remark:} 
-The ease by which the game is constructed is a consequence of the the cartesian
+The ease by which the game is constructed is a consequence of the the Cartesian
 product on a 2-dimensional message space. \\
 A natural induced topology of this space is the product
-topology, e.g. the canonical map $S_i \rightarrow \Pi_{j\in\mcI} S_i$.
+topology, e.g. the canonical map $S_i \rightarrow \Pi_{j\in\mcI} S^j$.
 
 Motivated by the symmetric nature of supply and demand, we determine the
-game-theoritical argument is complemented by an abstract-theoretical analysis.
+game-theoretical argument is complemented by an abstract-theoretical analysis.
 In fact, we may even be philosophically motivated, as the truth value of a bid
 is determined only by how it relates to markets, and whether it provides an
-accurate correspondence\footnote{This is known as the Correspondence theory of
-truth}. Using a set-theoretical approach to address the sellers
-bids, we derive our result from the symmetry of supply and demand,
+accurate correspondence.
+We claim there exists a binary equality relation $i\thicksim j$ that naturally evolves in the strategy space, and is both an equivalence relation and a partial order,
+and therefore is reflexive, transitive, symmetric and anti-symmetric.
+Using a set-theoretical approach to address the sellers bids, we derive our result from the symmetry of supply and demand,
 (\ref{buyerinversedemand}) and (\ref{sellerinversedemand}), Proposition
-\ref{incentive}, (\ref{newprice}), Lemma \ref{userunion} and Lemma
-\ref{buyercoordinate}, and include the following corollary,
+\ref{incentive}, (\ref{newprice}), Proposition \ref{userunion}, Lemma
+\ref{buyercoordinate}, and include the following Corollary.
 {
 \corollary{Data-bid correspondence (seller cooperation)}
-Let $\Delta$ be defined as in Lemma (\ref{userunion}).
-For a fixed time $t\in (0,\tau]$, seller bid $s^j$ is consistent with a truthful
-$\epsilon$-best reply.
+Let $\Delta$ be defined as in Proposition (\ref{userunion}) and fix the price $y$ for all sellers $j\in\Lambda$. For a fixed time $t\in (0,\tau]$, for any seller $j\in \Lambda$, the bid $s^j$ is consistent with a truthful
+$\epsilon$-best reply, i.e., $s^j \in T^\epsilon$.
 }\\
+% Sorry, didn't check this one, wow need it to work, ref https://math.stackexchange.com/questions/2264090/in-brouwers-theorem-how-does-the-absence-of-fixed-points-imply-certain-retract
 \proof{
-We claim there exists a binary equality relation $i\thicksim j$ that naturally evolves in the
-strategy space. For a seller $j$, let $y=\theta_i'(\g_i^j(a))$ for a buyer $i$.
-We use the the axiom of set equality,
-based on first-order logic with equality, which states that,  
-$\forall \ i\in\mcI, \ \forall \ j\in\mcI, (i\in \mcI^j \Leftrightarrow j\in\mcI_i)
-\Rightarrow i \thicksim j$, and is a logical consequence of (\ref{jtoi}).
-Then, for any allocation $a$, we may define the relation, $i\thicksim
-j$,
+For a seller-buyer pair, which we will denote $(i,j)$, let $y=\theta_i'(\g_*^j(a))$.
+We use the the axiom of set equality based on first-order logic,
+which states that, $\forall \ i\in\mcI, \ \forall \ j\in\mcI, (i\in \mcI^j \Leftrightarrow j\in\mcI_i) \Rightarrow i \thicksim j$, and follows from (\ref{jtoi}).  Then, for any allocation $a$, we may define the relation, $i\thicksim j$ as,
+ % dual?
 \begin{equation}\label{eqrel}
-        \big(\bar{D}_i^j(y), {\theta^j}'(\g_i^j(a))\big) =
-        \big(\g_i^j(a),y)\big).
+        d_i^*(y) = \g_*^j(a) \qquad \text{AND} \qquad f^j \circ \g_i^*(a) = y,
 \end{equation}
-Formally, the axiom states that a set is \emph{uniquely} determined by its
-members. It follows that $\thicksim$ defines equality of bids using a static
-analysis with respect to equilibrium, where all users who are not changing thier
-bids are considered equal.\\
-\textbf{Remark:} Equality is both an equivalence relation and a partial order,
-and therefore is reflexive, transitive, symmetric and antisymmetric. \\
-Now, we may define the mapping $s \mapsto [s]$,
+ where $f$ is defined as in (\ref{sellerinversedemand}).
+\vspace{-0.3in}
+{
+\begin{center}\begin{figure}[H]\caption{Buyer-seller pair}
+{
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  {
+     F_t(x) & F(x) \\
+     A_t & A \\};
+  \path[-stealth]
+    (m-1-1) edge node [left] {$\mathcal{B}_X$} (m-2-1)
+            edge [double] node [below] {$\mathcal{B}_t$} (m-1-2)
+    (m-2-1.east|-m-2-2) edge node [below] {$\mathcal{B}_T$}
+            node [above] {$\exists$} (m-2-2)
+    (m-1-2) edge node [right] {$\mathcal{B}_T$} (m-2-2)
+            edge [dashed,-] (m-2-1);
+\end{tikzpicture}
+}
+\end{figure}\end{center}
+}
+\vspace{-0.3in}
+We have that $f_i=f^j$, from (\ref{uservaluation}), i.e., for any $z\in D_i$, $x\in D^j$, 
+\begin{equation}\label{zerodiff}
+    \big[\theta_i(x) -\theta_i(x-\xi)\big] \quad \text{AND} \quad \big[\theta^j(z) - \theta^j(z-\zeta)\big].
+\end{equation}
+So, 
+$$
+    \big(\theta_i(x)\theta^j(z) - \theta_i(\xi)\theta^j(\zeta)\big)^2 = 4\theta_i(x)\theta^j(z).
+$$
+Since from (\ref{zerodiff}), $\theta_i\theta^j = $
+Formally, the set of users in an auction is uniquely determined by its members. We note that $\thicksim$ defines equality of bids using a \emph{static}
+analysis, meaning that sellers have fixed market prices; all users who are not changing their bids are considered equal.
+Define the mapping $s \mapsto t$ such that, for any $z$,
 \begin{equation}\label{indeqrel}
-         1_\vartheta \equiv \theta_i'(z) - {\theta^j}'(z) > \epsilon,
-\end{equation}o
-noting that equality in the bid quantity is implicity satisfied and $z =
-\bar{D}_i^j(y)\ge 0$. We have that $\vartheta$ is a price relation for a
-buyer-seller pair. Without loss of generality, let $S = \Pi_{j\in\mcI} \big(
-\Pi_{i\in\mcI} S_i^j$. The indicator function is the canonical mapping,
-$1_\vartheta : S \rightarrow \lbrace{0,1\rbrace}$. Then, as the product
-topology is preserved, the set of all indicator
-functions on $S$ naturally forms the power set $\mathcal{P}(S) = S_i\times
-S_{-i}$. Additionally, the set of all equivalence classes defines the quotient space, $S /
-\thicksim \ \equiv \big\lbrace [k] : k\in\mcI \big\rbrace$, forming a partition
-$P = \big\lbrace [s] : s\in S\big\rbrace$ of $S$. }
-
-
+         \theta_i'(z) - {\theta^j}'(z) \le \epsilon/2.
+\end{equation}
+and so,
+\begin{equation}\label{indeqrel}
+         1_\lambda : \theta_i'(z) \mapsto {\theta^j}'(z),
+\end{equation}
+Noting that the constraint $z\ge 0$ in the bid is implicitly satisfied and so $z =
+\bar{D}_i^j(y)\ge 0$.\\
+Let $S = \Pi_{j\in\mcI} \big(\Pi_{i\in\mcI} S_i^j \big)$. Now, given any set of buyers $\mcI_i \in \Lambda$ where we have an allocation from some $j \in \lambda_i$,
+% Given a subset B of a set A, the injection f:B->A defined by f(b)=b for all b in B is called the inclusion map.
+$\gamma(S_i, S_{-i}) : \lambda \rightarrow \Lambda \in \lbrace{0,1\rbrace}$, and so the indicator function is a canonical mapping as well as an inclusion map. As the product topology of the strategy space is preserved (WHY?), and as the set of all indicator functions on $S$ forms the power set $\mathcal{P}(S) = S_i\times S_{-i}$, we have that $\Delta \subset \mathcal{P}(S)$ is the result of the mapping $\gamma$ (ACK).
+$$
+    \lambda \rightarrow^\gamma \lambda (FINISH, MAPS TO THEMSELVES, i.e. in the same queue)
+$$
+Now, the set of all equivalence classes (DEFINE % need https://math.stackexchange.com/questions/2264090/in-brouwers-theorem-how-does-the-absence-of-fixed-points-imply-certain-retract
+) on $S$ defines a quotient space (WHY?), $S / \thicksim \ \equiv \big\lbrace [k] : k\in\mcI \big\rbrace$, forming a partition
+$[s] = \big\lbrace s^j\in S : s^j  \thicksim s_i \big\rbrace$ of $S$. $\qed$} \\
+Therefore each seller
+$j\in\mcI$ is equivalent to some buyer $i\in\mcI$. That is, buyer $i$'s utility constraint is satisfied in auction $j$ if and only if seller $j$'s utility constraint is also satisfied. Sellers with equality relation (\ref{eqrel}) belong to the same local auction equilibrium as the buyers. Each seller's bid price represents an $\epsilon$-best reply with respect to its (local) strategy space. Now, in order to find a fixed point in the mixed strategy space, we must have a continuous mapping between posets, i.e. $\Lambda^j \iff \lambda_i, \forall \ i, j \in \Delta$. We have the following Proposition.
 {
 \proposition{(Continuity of $\epsilon$-best reply on $\Delta$)}
-Let $\Delta$ be defined as in Lemma (\ref{userunion}). For any buyer
+Let $\Delta$ be defined as in Proposition (\ref{userunion}). For any buyer
 $i\in\lambda^j$, the collection of bids $B_i$ is continuous in $S_{-i}$
-}\\
+}
 \proof{
 Define $\g_i \circ \overline{P} = \max_{i\in\mcI^j} \theta_i'(0)$, and
 $\bar{P}_i(z, s_{i}) = \underline{P} = \epsilon -\varrho$, where $\epsilon$ is
 the bid fee, and $\varrho$ is $i$'s liability estimate for auction $j\in\mcI$. 
 We observe that $\g_i \circ B_i^\epsilon$ is simply $B_i^\epsilon$ restricted to seller pool
-$\mcI_i$, i.e. $\g_i \circ B_i^\epsilon \equiv B_i^\epsilon\vert_{\mcI_i}$ . Thus,
-we have $\g_i \circ T_i = ([0,D^k]_{k\in\mcI^j}\times [0,\g_i \circ
+$\mcI_i$, i.e. $\g_i \circ B_i^\epsilon \equiv B_i^\epsilon\vert_{\mcI_i}$ . % Why did I use size here? ... don't remember
+Thus, we have $\g_i \circ T_i = ([0,D^k]_{k\in\mcI^j}\times [0,\g_i \circ
 \overline{P}]^{\vert \mcI^j\vert})$
 is a product of closed subsets of compact sets. Now, we have that a closed
 subset of a compact set is compact and the resulting product topology gives
-Tychonoff's theorem. every product of a
-compact space is compact, we have $\g_i \circ B_i^\epsilon$
+Tychonoff's theorem, i.e. every product of a compact space is compact, we have $\g_i \circ B_i^\epsilon$
 is compact subset of $B_i^\epsilon$.
  Now, letting $\overline{P} = \max_{i\in\lambda^j} \theta_i'(0)$, and we have by
 definition of $\Delta$ and the product, 
+% DID I USE 'g' ANYWHERE ELSE?
 \begin{align*}
     \g_i \circ& S_i(s_{-i}) \equiv g_i\vert_{\Lambda^j} : S_i \mapsto S_i \\
     &\Rightarrow\bigg(\bigcup_{i\in\mcI^j} [0,D^k]_{k\in\mcI_i},
@@ -1437,45 +1422,169 @@ The result follows from the fact that $t_i$ is continuous in $s_i$, as was
 proven in \cite{semret}, and as a finite union of compact sets is a compact set.
 $\qed$}
 
-As a result of user behavior, and subsequent strategies, we determine that the
-data-exchange market behaves in a predictable way. However,
+As a result of user behavior, and subsequent strategies, we determine that the data-exchange market behaves in a predictable way. However,
 each auction may be played on the same or on a different scale in
-valuation, time and quantity, and so the rate at which market fluctuations occur is
-impossible to predict. 
-We show that our bidding strategy results in (at least one), \emph{static} Nash
-equilibrium, where the sellers reserve prices are fixed. This result is
-logically derived, and as our final result, we address the audience and note
-that it is a mere step in the right direction.
+valuation, time and quantity, and so the rate at which market fluctuations occur is impossible to predict. 
+We show that our bidding strategy results in (at least one), Nash equilibrium, where the sellers reserve prices are fixed. 
 {
-\lemma{(Local Static Nash Equilibrium)} 
-Let $\Delta$ be defined as in Lemma (\ref{userunion}), and suppose that auction
-$j\in\Delta$ is at equilibrium. Fix all $s_i^j$. 
-Using the rules of the data auction mechanism, along with type-based strategic
-moves, $j$ converges to an $\epsilon$-Nash equilibrium. 
-The proof follows closely that of \cite{semret}.
-}\\
+\lemma{(Local Nash Equilibrium)} 
+Let $\Delta$ be defined as in Proposition (\ref{userunion}), and suppose that auction $j\in\Delta$ is not in a transient state, e.g. $t = \tau^j$. Fix all $s_i^k, k\ne j$. Using the rules of the data auction mechanism, along with type-based strategic moves, $j$ converges to an $\epsilon$-Nash equilibrium. The proof follows closely that of \cite{semret}.
+}
 \proof{
 As auction $j$ is at equilibrium, and 
 since $\theta_i'$ is continuous, as was shown in Lemma \ref{uservaluation}, and
+$t=[t_i^j] \in \lambda^j \times \Lambda^j$ is continuous in $s$ on
+$T_k=\Pi_{k\in\lambda^j} T_k^j$. Now, $t$
+represents a continuous mapping of $[0,\sum_{k\in\lambda^j} D^k]_{i\in\Lambda^j}$ onto itself and we may use Brouwer's fixed point theorem, as in \cite{semret}, which states that the continuous mapping of a convex compact set into itself has at least one fixed point. Therefore, $\exists \ z^* = \sigma^*(z) \in [0,D_i]_{i\in\Lambda^j}$. So, given that $s^* = (z^*, \theta'(z^*))$, we have that $s^* = t(s^*)\in T$.
+%We have that $\forall s \in T$, $\forall z >0$, we have $z>0 = \sum_{i\in \Lambda^j} D_i(p_{i}^j/2,s_{-i})$, so using ($\ref{dataprice}$), $ \sum_{i\in\lambda^j}P_{i^*}^j(z,s_{-i}) \ge p_*^j$ and truthful bid $t_i = (v_i, \theta'(z)) \forall i \in \lambda^j$
+$\qed$
+}\\
+
+We have proven that buyers will submit bids according to their marginal valuations. We have that all bids represent $\epsilon$-best replies, and, as was proven in
+\cite{lazar}. The sellers' positive reserve price implies that bids are truthful. Finally, by properties determined by the construction of a mixed strategy symmetric game with a 2-dimensional message space, we may now restrict our analysis to the set of continuous, truthful, $\epsilon$-best replies, $T^\epsilon$.
+In mathematics, the notion of the continuity of functions is not immediately extensible to multivalued mappings; we show the correspondences between the two sets $\lambda$ and $\Lambda$. Specifically, we show that the joint set $\Delta^epsilon$ is hemicontinuous. Thus, we must show that the correspondence is continuous, and so gives the set $\Delta^{\epsilon} \equiv \Delta\vert_{T^\epsilon}$ the necessary functional property, leading to point-wise convergence. In this setting, convergence of a sequence of $\epsilon$-best replies is defined by the confluence, meaning that if buyer $i$ and seller $j$ both satisfy their utility functions, and arrive at an allocation $a$, then the $a$ is independent of the specific sequence of $\epsilon$-best replies used to complete the auction.\\
+%in an analogy to the property of the same name for functions?
+The data-sharing market consists of inter-dependent sets of these multi-auction games around possible fixed points.  Clearly, the union of all possible sets $\bigcup_{j\in\mcI} \Delta^j$ covers $\mcI$. We claim that the shared buyers between the different subsets $\Delta$ form a sufficiently connected set that the hierarchy described in Proposition \ref{userunion} holds. Then, there can only be a finite set of fixed points, where the sellers' reserve price is an equilibrium price in the global market. We first address the analytical approach, and derive the projective properties of $\Delta$ as a finite-dimensional linear space. We have that the reserve price of the sellers, and the bid price of the buyers is constant within an interval of length 2$\epsilon$. We proceed to define the boundary, using a closed graph approach to define our correspondence.\\
+In order to form our cover, we must have:
+\begin{enumerate}
+    \item\label{co1} A convergent sequence of points in the domain, mapping to a sequence of points in the range.
+    \item\label{co2} If there exists another convergent sequence in the domain, then the image of the limiting point must contain the limit of that sequence in the range.
+\end{enumerate}                                                                                                                                                                               The result is sufficient to infer that a sequential solution exists as a result of the correspondence relationship. The $\epsilon$-best reply of the seller or the buyer may be determined by backwards induction. Once a single fixed point has been found, then we may apply the rules of the mechanism, continuing backward until the best action for every pair has been determined. Effectively, we are determining the fixed points as functors on the larger function space, working backwards from an equilibrium.
+The correspondence between $i$ and $j$ forms the (ensemble) set $\lambda \sim \Lambda$. We note that due to the binary relation, the set of all possible $\epsilon$-best replies,
+$$
+    \Delta^\epsilon = \lbrace (i, j) \in \lambda \times \Lambda : j \in \lambda_i\rbrace,
+$$
+is well-posed by Hadamard [1923], definition (4.3) and Corollary (4.4) (PROVE?). %isomorphic?
+We define the set of functors as the cover of the space $\Delta$ as the graph $\Gamma(\Delta^{\epsilon})$; a directed, fully connected graph $\forall \ i \in \lambda^j$ and $\forall i\in\Lambda^k$, for some $k\in\mcI$. Therefore, we are able to define the upper hemicontinuity of the space $\Delta^{\epsilon}$ as the closure of its graph, which we will denote $\Gamma$, and we have the following Corollary,
+{
+\corollary{Hemicontinuity of $\Delta^\epsilon$}\\
+For any $j\in\Lambda$, define an ordered triple, $(\Lambda^j, \lambda^j, R)$, where $R$ is the relation from $\Lambda^j$ to $\lambda^j$, as in Proposition (3.7), and define,
+$$
+    \Gamma(\Delta^\epsilon) = \big\lbrace (z^*, \theta_i'(z^*)\ge (z^*, \theta_*^j'(z^*) \in \Lambda^j \times \lambda^j : i\in \Delta \big\rbrace.
+$$
+Then for any $j$ such that $t=\tau^j$, i.e. the market is not in a transition state, then the utility function $u^j$ is satisfied. 
+}
+\proof{We have that for any $i$, $\forall \ y_i \ne \theta'(z*)$
+$$
+    u_*^j \ge u^j(z^*,y_i) - \epsilon/2 - \varrho,
+$$
+and so we have that $[s] \mapsto t \in T^{\epsilon}$ is defined by $\Gamma: \Lambda \mapsto \lambda$ $\forall \ i \in \lambda$. This is the coassociative, cocommunicative property, where for some pair $(i,j) \in \Delta, u_*^j = u_i^* = u_i^j$. 
+The amount of data offered by a seller $j$ at price $p^*$ is met by a buyer $i$ at price $p_*$; we have that there must be some buyer-seller pair $(i,j)$ at some $t\in\tau_i\times \tau^j$ such that $p^* \ge p_*^j \ge p_i^* \ge p_*^$, and $u_* \simeq u^*$. Our cover is formed by the duality of \ref{buyervaluation} and \ref{sellervaluation}, and so we have hemicontinuity by the relation $R \equiv \theta_i \propto \theta^j$ for any $(i,j)\in\Delta^\epsilon$, and we assume the existence of a non-transient, global state, which may or may not be the termination of all auctions.\\ % which several non-degenerate maps may be chosen from to satisfy all constraints
+\textbf{Remark:} We note that $\tau_i$ does not need to equal $\tau^j$ in order for equivalence to hold, as at some point there will be at least one pair, $(i,j)$, which satisfy the constraints. In the simplest case, there are N buyers and N sellers, and if a stable matching exists, then (\ref{co1}) $\iff$ (\ref{co2}).}\\
+
+We have shown that our bidding strategy results in at least one \emph{local} Nash equilibrium. Now, we must prove that each bidding process converges to a unique auction, i.e., no buyer is assigned data that was not bid on, and no seller receives any false bids, which we have by assumption. We first show the existence of a \emph{static} Nash equilibrium, where the sellers reserve prices are fixed.
+{
+\corollary{(Primary fixed point)}
+Let $\Lambda, \lambda$ be defined as in \ref{userunion}. If
+${\Lambda}$ is not a partition, i.e. $\nexists \ j,k
+\in{\Lambda}$ such that $\Lambda^j \cap \Lambda^k = \emptyset$, then,
+for fixed $t$,
+$\exists \ j \in{\Lambda}$ such that $p_*^j \ge p_*^k, \ \forall \
+k\ne j\in{\Lambda}$. 
+}\\
+(CAN PROBABLY USE ALL BUYERS HERE... BECAUSE OF INF)
+\proof{
+We assume a finite number of users, with continuous valuation functions bounded both
+above and below. From the assumption that ${\Lambda}$ is not a
+partition, we have that the limits exist with respect to bid price $p_i^j$, 
+$$
+    \limsup\limits_{j\to I} {\Lambda} =  \bigcap_{j\ge 1}\bigcup_{k\ge j} \Lambda^k,
+$$
+is the primary seller $j$, and we have the market price $p_*^j$ from,
+$$
+    \liminf\limits_{i\to I} {\lambda} = \bigcup_{i\ge 1}\bigcap{k\ge i}
+\lambda^k,
+$$
+and the result follows from Lemma \ref{uservaluation}, Proposition
+\ref{userunion} and Proposition \ref{incentive}.}
+(NEED TO SHOW THEY ARE EQUAL...)
+%$\qed$\\
+(USE BOREL-CANTELLI WITH I.I.D? FUTURE WORK?)
+
+{
+\lemma{(Nash Equilibrium)} 
+Let $\Delta$ be defined as in Proposition (\ref{userunion}), and
+let the duration of auction $j$ be $\tau \in (0,\infty)$, and fix the
+sellers reserve prices at $t\in(0,\tau), \ \forall \ j\in\mcI$.
+Using the rules of the data auction mechanism applied independently by each
+user, where users are acting according to their respective strategies, the multi-auction game converges to an $\epsilon$-Nash equilibrium. 
+}\\
+\proof{
+(CAN'T DO THIS, NOT THE SAME TYPE OF GAME?)
+As $\theta_i'$ is continuous, as was shown in Lemma \ref{uservaluation}, and
 $t=[t_i^j] \in \lambda^j \times \Lambda^j$ is continuous in $s$ on
 $T_k=\Pi_{k\in\Lambda^j} T_k^j$. Now, $t$
 represents a continuous mapping of $[0,\sum_{k\in\Lambda^j} D^k]_{i\in\lambda^j}$ onto itself,
 and we may use Brouwer's fixed point theorem, as in \cite{semret},
 }
 
+As a result of user behavior, and subsequent strategies, we determine that the
+data-exchange market behaves in a predictable way. However,
+each auction may be played on the same or on a different scale in
+valuation, time and quantity, and so the rate at which market fluctuations occur is
+impossible to predict (NEED HELP!). 
+Arrow's paradox is an impossibility theorem stating that when buyers have three
+or more distinct alternatives (auctions), no deterministic ranking system can
+convert the ranked preferences of users into a market-wide (complete
+and transitive) ranking while also meeting a specified set of criteria:
+unrestricted domain, non-dictatorship, Pareto efficiency and independence of
+irrelevant alternatives. It follows that the case where
+$\theta_i = \theta^j$ as in (\ref{buyerinversedemand}) and
+(\ref{sellerinversedemand}) will only occur if each set $\Lambda \cup \lambda$
+is disjoint.
+
+Nonetheless, we claim that our mechanism is normative, that irrelevant
+alternatives should not matter, it is practical, uses minimal information,
+strategy, and provides the right incentives for the truthful revelation of individual preferences. 
+
+The rules of the PSP
+multi-auction drive market mutations that evolve and are regulated by the user
+strategies.
+(HERE)
+
+(DEFINITION.. USE?)
+In the General Symmetric Game, p is an evolutionary stable mixed strategy if
+there is a (small) positive number y such that when any other mixed strategy q
+invades p at any level x < y, the fitness of an organism playing p is strictly
+greater than the fitness of an organism playing q.
+(EXPAND)
+% DATA NASH EQ
+{
+\theorem{(Dynamic Nash Equilibrium)}
+Using the rules of the data auction mechanism, the secondary market
+converges to a $\epsilon$-Nash equilibrium. In the network auction
+game with the data-PSP rules applied independently by each user according to their respective strategies, the secondary market converges to an $\epsilon$-Nash
+equilibrium. 
+}\\
+
+
+\subsection{Efficiency}
+
+Formally, the
+mechanism is efficient, if, at equilibrium, the allocation maximizes
+$\sum_i\theta_i(a_i)$.
+(NEED OWN WORDS)
+The objective in designing the auction is that, at equilbrium, resources al-
+ways go to those who value them most. Indeed, the PSP mechanism does
+have that property. This can be loosely argued as follows: for each player,
+the marginal valuation is never greater than the bid price of any opponent
+who is getting a non-zero allocation. Thus, whenever there is a player j
+whose marginal valuation is less than player i 's and j is getting a non-zero
+allocation, i can take some away from j , paying a price less than i 's marginal
+valuation, i.e. increasing u i , but also increasing the total value, since i 's
+marginal value is greater. Thus at equilibrium, i.e. when no one can unilat-
+erally increase P their utility, the total value is maximized.
+
+\subsection{Convergence}
+
+% CONCLUSION AND FUTURE WORK
 \section{Conclusion and Future Work}
 
 We point out the need for better management of data on the consumer
 level. It is obvious that there is profit to be made by
 supplying data to the data-driven consumer. However, consumers must be given a
 choice. Consider Bob, a mobile wireless network user. Marketing firms have already realized that an incentive
-for Bob to interact with their ads is to provide them at no cost to his mobile
-    data. Inevitebly, ISPs will find a way to supply the growing demand. We
-    have demonstrated the trend towards a Monopoly of knowledge\footnote{John
-    Watson (2006), suggests that monopolies of knowledge gradually suppress new ways
-    of thinking.}, and suggest
-    that trust, and policy be decentralized, for the greater good.
-
+for Bob to interact with their ads is to provide them at no cost to his mobile data. 
 Mathematically, we have shown that if truthfulness holds locally for both buyers and sellers, i.e.
 $p_i ={\theta_i}', \ \forall \ j \in \mcI_i$ and $p^j = {\theta^j}', \ \forall \
 i \in\mcI^j$, then, in the absence of market shifts,
@@ -1533,7 +1642,7 @@ demand of buyer $i$ exceeds the supply, and the case where $\g_i(\varrho) >
 data. Then, by (\ref{buyerinversedemand}), the valuation of the data increases until either
 the demand is satisfied, the debit from the overhead costs are balanced
 (\ref{poolbnd}), or the upper bound of the sellers' reserve price
-$p^\kappa$ is reached. Thus, as in each case we have that $i$ is able to satisfy thier demand,
+$p^\kappa$ is reached. Thus, as in each case we have that $i$ is able to satisfy their demand,
 and we determine that the opt-out strategy is optimal.
 $\qed$}
 
@@ -1551,7 +1660,7 @@ Suppose that for some $i\in\mcI^j$, buyer demand is not met.
 In this case, by (\ref{bidcap}) the seller must notify $i$ of a
 partial allocation by changing the bid vector at index $i$.
 With this caveat, and Proposition \ref{buyerstrategy}, we have that the
-aggragate demand of subset $\mcI^j$ is satisfied by seller $j$.
+aggregate demand of subset $\mcI^j$ is satisfied by seller $j$.
 Although the buyers' valuation $\theta_i$ is not known to the seller, we will assume
 that buyers are bidding truthfully, and so the new reserve price $p_{i^*}^j +
 \epsilon ={\theta_{i^*}}' + \epsilon$. For clarity, let the reserve price be denoted by
@@ -1591,7 +1700,7 @@ partial
 allocation by changing $d_i^j$ and $d_k^j$ by (\ref{dataallocation}).
 Thus we determine the valuation between seller
 $j$ and buyer $i$ is well-posed, the reserve price (\ref{newprice}) is
-justified, and we have a local equlibirium at time $\tau$.
+justified, and we have a local equilibrium at time $\tau$.
 $\qed$}
 
 \section{Equilibrium}
@@ -1620,7 +1729,7 @@ and so, using (\ref{union-eq}),
     \g_i^{j}(a)  \le \bigg\lbrack D^{j} - \sum_{k\in \mcI^j : p_k^{j}> y_{i}^{j}} d_k^{j}\bigg\rbrack^+.
 \end{equation}
 Now, the buyer valuation function (\ref{buyervaluation}), guarantees
-that $\forall \ j\in\mcI_i$, $y_i^j \ge p_{i^*}^j$, where $p_{i^*}^j$ is the reserve price of seller $j$, defined in Proposision
+that $\forall \ j\in\mcI_i$, $y_i^j \ge p_{i^*}^j$, where $p_{i^*}^j$ is the reserve price of seller $j$, defined in Proposition
 \ref{sellerstrategy}, and is by definition the minimum price for a buyer bid to
 be accepted. 
 As $\bar{D}_i^j$ is non-decreasing, $\forall \ j\in \mcI_i$,
@@ -1679,7 +1788,7 @@ and the buyers' valuation (\ref{buyervaluation}),
 Then, as $a_i(z_i,p_i) \le z_i^j \le a_i^j $, and noting that
 $z_i^j>0\Rightarrow \theta_i\ge 0\Rightarrow f_i\ge 0$, we have $u_i(z_i,y_i) - u_i \ge 0$, $\forall \ j\in\mcI_i$.
 $\qed$}
-%Finally, we note that $z_i^j$ does not increase the aggragate demand of the buyer.
+%Finally, we note that $z_i^j$ does not increase the aggregate demand of the buyer.
 
 \subsection{Proof of Proposition 4.2}
 \proof{
@@ -1822,142 +1931,7 @@ purchase from the ISP, $\kappa$, as a monopoly sale. Similarly, in
 the case of insufficient demand, where we may assume that data is held at time
 $t=0$ by $\kappa$ at bid price $\epsilon$.
 
-\iffalse
-%We have proven that buyers will submit bids according to their marginal
-%valuations. Now, in the interest of completeness (BAD SENTENCE), 
-We have that all bids represent $\epsilon$-best replies, and, as was proven in
-\cite{lazar}, the sellers' positive reserve price implies that bids are
-truthful. Finally, by properties determined by the construction of a mixed strategy
-symmetric game with a 2-dimensional message space, we may now restrict our
-analysis to the set of continuous, truthful, $\epsilon$-best replies, $B^\epsilon$.
 
-{
-\corollary{Hemicontinuity of $\Delta$}
-}
-
-The data-sharing market consists of inter-dependent sets of these
-multi-auction games around possible fixed points.  Clearly, the union of all possible
-sets $\bigcup_{j\in\mcI} \Delta^j$ covers $\mcI$. We claim that the shared buyers
-between the different subsets $\Delta$ form a sufficiently connected set that
-the heirarchy described in Proposition \ref{userunion} holds. Then,
-there can only be a single primary fixed point, where the sellers' reserve
-price is an equilibrium price in the global market. 
-We first address the analytical approach, and demonstrate properties of
-$\Delta$ as a finite-dimensional linear topological space. We have that the
-reserve price of the sellers, and the bid price of the buyers is constant
-within an interval of length 2$\epsilon$. We have that 
-(HERE) We have the following
-Corollary, (MIGHT NEED TO REDEFINE.. NOT CLEAR IS A SEQUENCE, SHOULD BE
-SEQUENCE OF PRICES INSTEAD OF USERS?) 
-{
-\corollary{(Primary fixed point)}
-Let the set of shared buyers be denoted as,
-$\underline{\lambda} = \bigcap_{j\in\mcI} \lambda^j$, and the set of all
-sellers as, $\overline{\Lambda} = \bigcup_{j\in\mcI}\Lambda^j$. If
-$\overline{\Lambda}$ is not a partition, i.e. $\nexists \ j,k
-\in\overline{\Lambda}$ such that $\Lambda^j \cap \Lambda^k = \emptyset$, then,
-for a fixed time $t$,
-$\exists \ j \in\overline{\Lambda}$ such that $p_*^j \ge p_*^k, \ \forall \
-k\ne j\in\overline{\Lambda}$. 
-}\\
-(CAN PROBABLY USE ALL BUYERS HERE... BECAUSE OF INF)
-\proof{
-We assume a finite number of users, with continuous valuation functions bounded both
-above and below. From the assumption that $\overline{\Lambda}$ is not a
-partition, we have that the limits exist with respect to bid price $p_i^j$, 
-$$
-    \limsup\limits_{j\to I} \overline{\Lambda} =  \bigcap_{j\ge 1}\bigcup_{k\ge j} \Lambda^k,
-$$
-is the primary seller $j$, and we have the market price $p_*^j$ from,
-$$
-    \liminf\limits_{i\to I} \overline{\lambda} = \bigcup_{i\ge 1}\bigcap{k\ge i}
-\lambda^k,
-$$
-and the result follows from Lemma \ref{uservaluation}, Proposition
-\ref{userunion} and Proposition \ref{incentive}.}
-(NEED TO SHOW THEY ARE EQUAL...)
-%$\qed$\\
-(USE BOREL-CANTELLI WITH I.I.D? FUTURE WORK?)
-
-We show that our bidding strategy is
-part of a Nash equilibrium. We first show the existence of a \emph{static} Nash
-equilibrium, where the sellers reserve prices are fixed.
-{
-\lemma{(Static Nash Equilibrium)} 
-Let $\Delta$ be defined as in Lemma (\ref{userunion}), and
-let the duration of auction $j$ be $\tau \in (0,\infty)$, and fix the
-sellers reserve prices at $t\in(0,\tau), \ \forall \ j\in\mcI$.
-Using the rules of the data auction mechanism applied independently by each
-user, where users are acting according to their respective strategies, the multi-auction game converges to an $\epsilon$-Nash equilibrium. 
-}\\
-\proof{
-(CAN'T DO THIS, NOT THE SAME TYPE OF GAME?)
-As $\theta_i'$ is continuous, as was shown in Lemma \ref{uservaluation}, and
-$t=[t_i^j] \in \lambda^j \times \Lambda^j$ is continuous in $s$ on
-$T_k=\Pi_{k\in\Lambda^j} T_k^j$. Now, $t$
-represents a continuous mapping of $[0,\sum_{k\in\Lambda^j} D^k]_{i\in\lambda^j}$ onto itself,
-and we may use Brouwer's fixed point theorem, as in \cite{semret},
-}
-
-As a result of user behavior, and subsequent strategies, we determine that the
-data-exchange market behaves in a predictable way. However,
-each auction may be played on the same or on a different scale in
-valuation, time and quantity, and so the rate at which market fluctuations occur is
-impossible to predict (NEED HELP!). 
-Arrow's paradox is an impossibility theorem stating that when buyers have three
-or more distinct alternatives (auctions), no deterministic ranking system can
-convert the ranked preferences of users into a market-wide (complete
-and transitive) ranking while also meeting a specified set of criteria:
-unrestricted domain, non-dictatorship, Pareto efficiency and independence of
-irrelevant alternatives. It follows that the case where
-$\theta_i = \theta^j$ as in (\ref{buyerinversedemand}) and
-(\ref{sellerinversedemand}) will only occur if each set $\Lambda \cup \lambda$
-is disjoint.
-
-Nonetheless, we claim that our mechanism is normative, that irrelevant
-alternatives should not matter, it is practical, uses minimal information,
-strategy, and provides the right incentives for the truthful revelation of individual preferences. 
-
-The rules of the PSP
-multi-auction drive market mutations that evolve and are regulated by the user
-strategies.
-(HERE)
-
-(DEFINITION.. USE?)
-In the General Symmetric Game, p is an evolutionarily stable mixed strategy if
-there is a (small) positive number y such that when any other mixed strategy q
-invades p at any level x < y, the fitness of an organism playing p is strictly
-greater than the fitness of an organism playing q.
-(EXPAND)
-% DATA NASH EQ
-{
-\theorem{(Dynamic Nash Equilibrium)}
-Using the rules of the data auction mechanism, the secondary market
-converges to a $\epsilon$-Nash equilibrium. In the network auction
-game with the data-PSP rules applied independently by each user according to their respective strategies, the secondary market converges to an $\epsilon$-Nash
-equilibrium. 
-}\\
-
-
-\subsection{Efficiency}
-
-Formally, the
-mechanism is efficient, if, at equilibrium, the allocation maximizes
-$\sum_i\theta_i(a_i)$.
-(NEED OWN WORDS)
-The objective in designing the auction is that, at equilbrium, resources al-
-ways go to those who value them most. Indeed, the PSP mechanism does
-have that property. This can be loosely argued as follows: for each player,
-the marginal valuation is never greater than the bid price of any opponent
-who is getting a non-zero allocation. Thus, whenever there is a player j
-whose marginal valuation is less than player i 's and j is getting a non-zero
-allocation, i can take some away from j , paying a price less than i 's marginal
-valuation, i.e. increasing u i , but also increasing the total value, since i 's
-marginal value is greater. Thus at equilibrium, i.e. when no one can unilat-
-erally increase P their utility, the total value is maximized.
-
-\subsection{Convergence}
-\fi
 
 %\end{multicols}
 
